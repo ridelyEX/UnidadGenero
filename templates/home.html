@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Unidad de Género{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Bienvenido, {{ user.nombre }}</h1>
+        <p class="col-md-8 fs-4">Sistema de Gestión de la Unidad de Género.</p>
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Gestión de Usuarios</h5>
+                        <p class="card-text">Administrar usuarios y roles del sistema.</p>
+                        <a href="{% url 'usuarios_list' %}" class="btn btn-primary">Ir a Usuarios</a>
+                    </div>
+                </div>
+            </div>
+            <!-- More dashboard cards can be added here -->
+        </div>
+    </div>
+</div>
+{% endblock %}

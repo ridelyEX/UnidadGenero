@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Directorio de Personas{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Directorio de Personas</h2>
+    <a href="{% url 'persona_create' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Nueva Persona</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Sexo</th>
+                <th>Cargo</th>
+                <th>Dependencia</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personas %}
+            <tr>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.get_sexo_display }}</td>
+                <td>{{ persona.cargo }}</td>
+                <td>{{ persona.id_dependencia }}</td>
+                <td>
+                    {% if persona.activo %}
+                    <span class="badge bg-success">Activo</span>
+                    {% else %}
+                    <span class="badge bg-secondary">Inactivo</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'persona_update' persona.pk %}" class="btn btn-sm btn-primary"><i
+                            class="bi bi-pencil"></i></a>
+                    <a href="{% url 'persona_delete' persona.pk %}" class="btn btn-sm btn-danger"><i
+                            class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No hay personas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
