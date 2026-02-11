@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Actividades{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Actividades</h2>
+    <a href="{% url 'actividad_create' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Nueva Actividad</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Objetivo</th>
+                <th>Fecha Inicio</th>
+                <th>Estatus</th>
+                <th>Responsable</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for actividad in actividades %}
+            <tr>
+                <td>{{ actividad.tipo_actividad }}</td>
+                <td>{{ actividad.objetivo|truncatechars:50 }}</td>
+                <td>{{ actividad.fecha_inicio }}</td>
+                <td>
+                    <span class="badge bg-info text-dark">{{ actividad.estatus }}</span>
+                </td>
+                <td>{{ actividad.id_usuario_responsable }}</td>
+                <td>
+                    <a href="{% url 'actividad_update' actividad.pk %}" class="btn btn-sm btn-primary"><i
+                            class="bi bi-pencil"></i></a>
+                    <a href="{% url 'actividad_delete' actividad.pk %}" class="btn btn-sm btn-danger"><i
+                            class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No hay actividades registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

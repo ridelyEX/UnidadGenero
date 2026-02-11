@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if object %}Editar{% else %}Nuevo{% endif %} Caso{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4>{% if object %}Editar{% else %}Nuevo{% endif %} Caso</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <div class="form-text">{{ field.help_text }}</div>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="{% url 'casos_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    document.querySelectorAll('input, select, textarea').forEach(function (input) {
+        if (input.type !== 'checkbox') {
+            input.classList.add('form-control');
+        } else {
+            input.classList.add('form-check-input');
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Capacitación{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4>Confirmar Eliminación</h4>
+            </div>
+            <div class="card-body">
+                <p>¿Estás seguro que deseas eliminar la capacitación <strong>{{ object.nombre }}</strong>?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+                    <a href="{% url 'capacitaciones_list' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
