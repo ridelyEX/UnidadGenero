@@ -11,19 +11,21 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gejf(fm6o5&0gtm&9)4*r@%$r_cik9#_ov@t@&($ia%ot#)i9z'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -83,8 +85,12 @@ WSGI_APPLICATION = 'unidad_genero.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': (os.getenv('DB_NAME'), 'udg'),
+        'USER': (os.getenv('DB_USER'), 'root'),
+        'PASSWORD': (os.getenv('DB_PASSWORD') ,'root'),
+        'HOST': (os.getenv('DB_HOST') ,'localhost'),
+        'PORT': (os.getenv('PORT') ,'3306'),
     }
 }
 
