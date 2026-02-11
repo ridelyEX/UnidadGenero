@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from organizaciones.models import Dependencia
 
 class Actividad(models.Model):
     id_actividad = models.AutoField(primary_key=True)
@@ -44,7 +43,6 @@ class Capacitacion(models.Model):
     fecha = models.DateField()
     modalidad = models.CharField(max_length=50) # Presencial, Virtual, Hibrida
     certificacion = models.BooleanField(default=False)
-    id_dependencia = models.ForeignKey(Dependencia, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre

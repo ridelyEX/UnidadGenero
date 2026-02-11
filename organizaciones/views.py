@@ -12,7 +12,7 @@ class PersonaListView(LoginRequiredMixin, ListView):
 class PersonaCreateView(LoginRequiredMixin, CreateView):
     model = Persona
     template_name = 'organizacion/persona_form.html'
-    fields = ['nombre', 'sexo', 'cargo', 'id_dependencia', 'activo']
+    fields = ['nombre', 'sexo', 'cargo', 'activo']
     success_url = reverse_lazy('personas_list')
 
     def form_valid(self, form):
@@ -22,7 +22,7 @@ class PersonaCreateView(LoginRequiredMixin, CreateView):
 class PersonaUpdateView(LoginRequiredMixin, UpdateView):
     model = Persona
     template_name = 'organizacion/persona_form.html'
-    fields = ['nombre', 'sexo', 'cargo', 'id_dependencia', 'activo']
+    fields = ['nombre', 'sexo', 'cargo', 'activo']
     success_url = reverse_lazy('personas_list')
 
     def form_valid(self, form):

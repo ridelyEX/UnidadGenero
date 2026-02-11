@@ -65,6 +65,8 @@ class DocumentoDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(self.request, 'Documento eliminado correctamente.')
         return super().delete(request, *args, **kwargs)
 
+
+
 # --- Bitacora Views ---
 class BitacoraListView(LoginRequiredMixin, ListView):
     model = Bitacora
@@ -83,7 +85,7 @@ class CapacitacionListView(LoginRequiredMixin, ListView):
 class CapacitacionCreateView(LoginRequiredMixin, CreateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
-    fields = ['nombre', 'fecha', 'modalidad', 'certificacion', 'id_dependencia']
+    fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
     success_url = reverse_lazy('capacitaciones_list')
 
     def form_valid(self, form):
@@ -93,7 +95,7 @@ class CapacitacionCreateView(LoginRequiredMixin, CreateView):
 class CapacitacionUpdateView(LoginRequiredMixin, UpdateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
-    fields = ['nombre', 'fecha', 'modalidad', 'certificacion', 'id_dependencia']
+    fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
     success_url = reverse_lazy('capacitaciones_list')
 
     def form_valid(self, form):

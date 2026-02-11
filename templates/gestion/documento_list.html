@@ -25,7 +25,7 @@
         <tbody>
             {% for documento in documentos %}
             <tr>
-                <td><a href="{{ documento.ruta_archivo.url }}" target="_blank">{{ documento.nombre_archivo }}</a></td>
+                <td><a href="{{ documento.ruta_archivo.url }}" target="_blank" download="{{ documento.ruta_archivo.url }}">{{ documento.nombre_archivo }}</a></td>
                 <td>{{ documento.tipo_documento }}</td>
                 <td>{{ documento.version }}</td>
                 <td>{{ documento.estado }}</td>
@@ -44,5 +44,6 @@
             {% endfor %}
         </tbody>
     </table>
+
 </div>
 {% endblock %}

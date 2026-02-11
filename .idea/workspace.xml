@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="testear">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="settings modificados para funcionar con mysql y dotenv">
+      <change afterPath="$PROJECT_DIR$/templates/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestion/capacitacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/capacitacion_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestion/documento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/documento_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/organizacion/persona_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/organizacion/persona_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unidad_genero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidad_genero/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidad_genero/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +31,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="Gemini 3 Pro (Preview)" />
-      <entry key="agent-panel" value="Gemini 3 Pro (Preview)" />
+      <entry key="chat-panel" value="GPT-5.1-Codex" />
+      <entry key="agent-panel" value="GPT-5.1-Codex" />
     </selectedModels>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -128,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770829176542</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="settings modificados para funcionar con mysql y dotenv">
+      <option name="closed" value="true" />
+      <created>1770832658038</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770832658038</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +162,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="testear" />
-    <option name="LAST_COMMIT_MESSAGE" value="testear" />
+    <MESSAGE value="settings modificados para funcionar con mysql y dotenv" />
+    <option name="LAST_COMMIT_MESSAGE" value="settings modificados para funcionar con mysql y dotenv" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -1,5 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.views import LogoutView
+
+from unidad_genero.urls import handler404
 from .views import (
     CustomLoginView, UsuarioListView, UsuarioCreateView,
     UsuarioUpdateView, UsuarioDeleteView
