@@ -9,8 +9,11 @@ class Persona(models.Model):
 
     id_persona = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=150)
+    curp = models.CharField(max_length=18, blank=True, null=True)
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
     cargo = models.CharField(max_length=100)
+    puesto = models.CharField(max_length=100, blank=True, null=True)
+    departamento = models.CharField(max_length=100, blank=True, null=True)
     activo = models.BooleanField(default=True)
 
     def __str__(self):

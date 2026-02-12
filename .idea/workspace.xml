@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Logout corregido con método post dentro del template. Logger y messeges añadido a LoginView">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="id asignado a los roles">
+      <change afterPath="$PROJECT_DIR$/documentos/ZAPS_2026.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuarios/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770913731029</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="id asignado a los roles">
+      <option name="closed" value="true" />
+      <created>1770925275170</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770925275170</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,7 +188,8 @@
     <MESSAGE value="añadida plantilla 404, campo id_dependencia eliminado" />
     <MESSAGE value="descarga disponible de documentos en Documentos" />
     <MESSAGE value="Logout corregido con método post dentro del template. Logger y messeges añadido a LoginView" />
-    <option name="LAST_COMMIT_MESSAGE" value="Logout corregido con método post dentro del template. Logger y messeges añadido a LoginView" />
+    <MESSAGE value="id asignado a los roles" />
+    <option name="LAST_COMMIT_MESSAGE" value="id asignado a los roles" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
