@@ -19,11 +19,12 @@ from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from .views import HomeView, Error404View
+from .views import HomeView, Error404View, LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeView.as_view(), name='home'),
+    path('', LoginView.as_view(), name='login'),
+    path('home', HomeView.as_view(), name='home'),
     path('', include('usuarios.urls')),
     path('', include('organizaciones.urls')),
     path('', include('gestion.urls')),

@@ -9,20 +9,6 @@ from .models import Usuario, Rol
 
 logger = logging.getLogger(__name__)
 
-class CustomLoginView(LoginView):
-    template_name = 'usuarios/login.html'
-    redirect_authenticated_user = True
-
-    def form_invalid(self, form):
-        username = self.request.POST.get('username', "Desconocido")
-        ip = self.request.META.get('REMOTE_ADDR', 'sin_ip')
-        logger.error(f'Intento de inicio de sesión fallido para ${username}')
-        messages.error(self.request, 'El usuario y la contraseña no coinciden')
-        return super().form_invalid(form)
-
-    def get_success_url(self):
-        return reverse_lazy('home')
-
 class UsuarioListView(LoginRequiredMixin, ListView):
     model = Usuario
     template_name = 'usuarios/usuario_list.html'

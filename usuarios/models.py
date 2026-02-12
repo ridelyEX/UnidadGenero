@@ -6,6 +6,13 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.utils import timezone
 
 class Rol(models.Model):
+    roles = [
+        ('CAS', 'Comité de atención y seguimiento'),
+        ('PC', 'Persona consejera'),
+        ('CUG', 'Coordinación de unidad de género'),
+        ('PG', 'Personal general'),
+    ]
+
     id_rol = models.AutoField(primary_key=True)
     nombre_rol = models.CharField(max_length=50)
     descripcion = models.TextField()
