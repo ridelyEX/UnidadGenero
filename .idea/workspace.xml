@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="settings modificados para funcionar con mysql y dotenv">
-      <change afterPath="$PROJECT_DIR$/templates/404.html" afterDir="false" />
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="descarga disponible de documentos en Documentos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organizaciones/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organizaciones/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gestion/capacitacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/capacitacion_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gestion/documento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/documento_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/organizacion/persona_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/organizacion/persona_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuarios/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +21,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="GPT-5.1-Codex" />
-      <entry key="agent-panel" value="GPT-5.1-Codex" />
+      <entry key="chat-panel" value="Claude Sonnet 4.5" />
+      <entry key="agent-panel" value="Claude Sonnet 4.5" />
     </selectedModels>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -146,7 +136,23 @@
       <option name="project" value="LOCAL" />
       <updated>1770832658038</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="añadida plantilla 404, campo id_dependencia eliminado">
+      <option name="closed" value="true" />
+      <created>1770842800325</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1770842800325</updated>
+    </task>
+    <task id="LOCAL-00006" summary="descarga disponible de documentos en Documentos">
+      <option name="closed" value="true" />
+      <created>1770842967876</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770842967880</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,7 +169,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="testear" />
     <MESSAGE value="settings modificados para funcionar con mysql y dotenv" />
-    <option name="LAST_COMMIT_MESSAGE" value="settings modificados para funcionar con mysql y dotenv" />
+    <MESSAGE value="añadida plantilla 404, campo id_dependencia eliminado" />
+    <MESSAGE value="descarga disponible de documentos en Documentos" />
+    <option name="LAST_COMMIT_MESSAGE" value="descarga disponible de documentos en Documentos" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

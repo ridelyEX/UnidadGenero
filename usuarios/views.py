@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -6,9 +7,18 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Usuario, Rol
 
+logger = logging.getLogger(__name__)
+
 class CustomLoginView(LoginView):
     template_name = 'usuarios/login.html'
     redirect_authenticated_user = True
+
+    def form_invalid(self, form):
+        username = self.request.POST.get('username', "Desconocido")
+        ip = self.request.META.get('REMOTE_ADDR', 'sin_ip')
+        logger.error(f'Intento de inicio de sesión fallido para ${username}')
+        messages.error(self.request, 'El usuario y la contraseña no coinciden')
+        return super().form_invalid(form)
 
     def get_success_url(self):
         return reverse_lazy('home')
