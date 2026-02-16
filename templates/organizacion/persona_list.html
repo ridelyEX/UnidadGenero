@@ -15,6 +15,8 @@
                 <th>Nombre</th>
                 <th>Sexo</th>
                 <th>Cargo</th>
+                <th>Puesto</th>
+                <th>Departamento</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -25,6 +27,8 @@
                 <td>{{ persona.nombre }}</td>
                 <td>{{ persona.get_sexo_display }}</td>
                 <td>{{ persona.cargo }}</td>
+                <td>{{ persona.puesto }}</td>
+                <td>{{ persona.departamento }}</td>
                 <td>
                     {% if persona.activo %}
                     <span class="badge bg-success">Activo</span>
