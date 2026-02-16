@@ -24,9 +24,20 @@ class Bitacora(models.Model):
         return f"{self.accion} - {self.fecha_hora}"
 
 class Documento(models.Model):
+    #Agregar tipo de documentos
+    tipo_documentos = [
+        ('MIN', 'Minutas'),
+        ('CDC', 'Constancias de capacitación'),
+        ('ETV', 'Entrevistas'),
+        ('TPL', 'Test psicológico'),
+        ('TPM', 'Test piscométrico'),
+        ('CVT', 'Convocatoria'),
+        ('EVD', 'Evidencias'),
+    ]
+
     id_documento = models.AutoField(primary_key=True)
     nombre_archivo = models.CharField(max_length=200)
-    tipo_documento = models.CharField(max_length=100)
+    tipo_documento = models.CharField(max_length=100, choices=tipo_documentos)
     ruta_archivo = models.FileField(upload_to='documentos/')
     fecha_carga = models.DateTimeField(auto_now_add=True)
     version = models.CharField(max_length=20)
