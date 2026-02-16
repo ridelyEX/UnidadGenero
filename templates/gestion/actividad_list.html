@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Actividades</h2>
-    <a href="{% url 'actividad_create' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Nueva Actividad</a>
+    <h2>Acciones</h2>
+    <a href="{% url 'actividad_create' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Nueva Acción</a>
 </div>
 
 <div class="table-responsive">
@@ -17,7 +17,7 @@
                 <th>Fecha Inicio</th>
                 <th>Estatus</th>
                 <th>Responsable</th>
-                <th>Acciones</th>
+                <th>Modificaciones</th>
             </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="6" class="text-center">No hay actividades registradas.</td>
+                <td colspan="6" class="text-center">No hay acciones registradas.</td>
             </tr>
             {% endfor %}
         </tbody>
