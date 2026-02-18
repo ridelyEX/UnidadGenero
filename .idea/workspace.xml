@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Modificado el campo fecha de text a date en Casos.">
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Aparece la jerarquia si es que se trata de acoso laboral en la lista de Casos.&#10;Modificado el campo fecha de text a date en Casos.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/usuarios/usuario_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usuarios/usuario_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771443445943</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Aparece la jerarquia si es que se trata de acoso laboral en la lista de Casos.&#10;Modificado el campo fecha de text a date en Casos.">
+      <option name="closed" value="true" />
+      <created>1771443722098</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1771443722098</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,7 +260,8 @@
     <MESSAGE value="Nomenclatura de actividad actualizado a Acción/es. &#10;Navbar modificado para ser sidebar desplegable" />
     <MESSAGE value="barra de búsqueda por nombre agregado a la pantalla de persona_list.html.&#10;Static definido en settings.py.&#10;Botón desplegable de hamburguesa removido aparece ahora como comentado en base.html" />
     <MESSAGE value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Modificado el campo fecha de text a date en Casos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Modificado el campo fecha de text a date en Casos." />
+    <MESSAGE value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Aparece la jerarquia si es que se trata de acoso laboral en la lista de Casos.&#10;Modificado el campo fecha de text a date en Casos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Aparece la jerarquia si es que se trata de acoso laboral en la lista de Casos.&#10;Modificado el campo fecha de text a date en Casos." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

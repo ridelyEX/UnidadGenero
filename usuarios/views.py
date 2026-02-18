@@ -6,6 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Usuario, Rol
+from django import forms
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +21,16 @@ class UsuarioCreateView(LoginRequiredMixin, CreateView):
     fields = ['nombre', 'correo', 'password', 'id_rol', 'is_active', 'is_admin']
     success_url = reverse_lazy('usuarios_list')
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['id_rol'].label_from_instance = lambda obj: f"{obj.descripcion}"
+        return form
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['roles'] = Rol.objects.all()
+        return context
+
     def form_valid(self, form):
         user = form.save(commit=False)
         user.set_password(form.cleaned_data['password'])
@@ -32,6 +43,11 @@ class UsuarioUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'usuarios/usuario_form.html'
     fields = ['nombre', 'correo', 'id_rol', 'is_active', 'is_admin']
     success_url = reverse_lazy('usuarios_list')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['id_rol'].label_from_instance = lambda obj: f"{obj.descripcion}"
+        return form
 
     def form_valid(self, form):
         messages.success(self.request, 'Usuario actualizado exitosamente.')

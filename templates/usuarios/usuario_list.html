@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ usuario.nombre }}</td>
                 <td>{{ usuario.correo }}</td>
-                <td>{{ usuario.id_rol }}</td>
+                <td>{{ usuario.id_rol.descripcion|default:"N/A" }}</td>
                 <td>
                     {% if usuario.is_active %}
                     <span class="badge bg-success">Activo</span>
