@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 
 {% block title %}Directorio de Personas{% endblock %}
 
@@ -6,6 +6,10 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Directorio de Personas</h2>
     <a href="{% url 'persona_create' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Nueva Persona</a>
+</div>
+
+<div class="search-box">
+    {% include 'tools/searchBar.html' %}
 </div>
 
 <div class="table-responsive">
@@ -23,12 +27,12 @@
         </thead>
         <tbody>
             {% for persona in personas %}
-            <tr>
-                <td>{{ persona.nombre }}</td>
+            <tr class="name">
+                <td> {{ persona.nombre }}</td>
                 <td>{{ persona.get_sexo_display }}</td>
                 <td>{{ persona.cargo }}</td>
-                <td>{{ persona.puesto }}</td>
-                <td>{{ persona.departamento }}</td>
+                <td>{{ persona.get_puesto_display }}</td>
+                <td>{{ persona.get_departamento_display }}</td>
                 <td>
                     {% if persona.activo %}
                     <span class="badge bg-success">Activo</span>
@@ -51,4 +55,8 @@
         </tbody>
     </table>
 </div>
+
+{% block js %}
+<script src="{% static 'scripts/searchBarFunc.js' %}"></script>
+{% endblock %}
 {% endblock %}

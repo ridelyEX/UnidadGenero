@@ -1,0 +1,15 @@
+<div class="search-box">
+  <form method="GET" id="search-form">
+    <fieldset>
+        <div class="input-group">
+            <input type="text" name="q" id="searchBar" class="form-control"
+                   onkeyup="search_by_name()"
+                   placeholder="Buscar..."
+                   value="{{ request.GET.q|default:'' }}">
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </fieldset>
+  </form>
+</div>
