@@ -23,7 +23,7 @@
             {% for caso in casos %}
             <tr>
                 <td>{{ caso.id_caso }}</td>
-                <td>{{ caso.tipo }}</td>
+                <td>{{ caso.get_tipo_display }}</td>
                 <td>{{ caso.fecha }}</td>
                 <td>{{ caso.estatus }}</td>
                 <td>

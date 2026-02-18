@@ -1,3 +1,4 @@
+from django import forms
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
@@ -16,8 +17,13 @@ class CasoListView(AdminRequiredMixin, ListView):
 class CasoCreateView(AdminRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'fecha', 'estatus', 'medidas']
+    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'estatus', 'medidas']
     success_url = reverse_lazy('casos_list')
+
+    def get_form(self,form_class=None):
+        form = super().get_form(form_class)
+        form.fields['fecha'].widget = forms.DateInput(attrs={'type': 'date'})
+        return form
 
     def form_valid(self, form):
         messages.success(self.request, 'Caso registrado exitosamente.')
@@ -28,6 +34,11 @@ class CasoUpdateView(AdminRequiredMixin, UpdateView):
     template_name = 'casos/caso_form.html'
     fields = ['tipo', 'fecha', 'estatus', 'medidas']
     success_url = reverse_lazy('casos_list')
+
+    def get_form(self,form_class=None):
+        form = super().get_form(form_class)
+        form.fields['fecha'].widget = forms.DateInput(attrs={'type': 'date'})
+        return form
 
     def form_valid(self, form):
         messages.success(self.request, 'Caso actualizado exitosamente.')
