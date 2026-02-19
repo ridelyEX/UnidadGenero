@@ -5,8 +5,8 @@ from .views import (
 )
 
 urlpatterns = [
-    path('casos/', CasoListView.as_view(), name='casos_list'),
-    path('casos/nuevo/', CasoCreateView.as_view(), name='caso_create'),
-    path('casos/<int:pk>/editar/', CasoUpdateView.as_view(), name='caso_update'),
-    path('casos/<int:pk>/eliminar/', CasoDeleteView.as_view(), name='caso_delete'),
+    path('expediente/', CasoListView.as_view(), name='expediente_list'),
+    path('expediente/nuevo/', CasoCreateView.as_view(), name='expediente_create'),
+    path('expediente/<int:pk>/editar/', CasoUpdateView.as_view(), name='expediente_update'),
+    path('expediente/<int:pk>/eliminar/', CasoDeleteView.as_view(), name='expediente_delete'),
 ]

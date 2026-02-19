@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}{% if object %}Editar{% else %}Nuevo{% endif %} Caso{% endblock %}
+{% block title %}{% if object %}Editar{% else %}Nuevo{% endif %} Expediente{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h4>{% if object %}Editar{% else %}Nuevo{% endif %} Caso</h4>
+                <h4>{% if object %}Editar{% else %}Nuevo{% endif %} Expediente</h4>
             </div>
             <div class="card-body">
                 <form method="post">
@@ -26,7 +26,7 @@
                     {% endfor %}
 
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                    <a href="{% url 'casos_list' %}" class="btn btn-secondary">Cancelar</a>
+                    <a href="{% url 'expediente_list' %}" class="btn btn-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

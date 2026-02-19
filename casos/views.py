@@ -12,13 +12,13 @@ class AdminRequiredMixin(UserPassesTestMixin):
 class CasoListView(AdminRequiredMixin, ListView):
     model = Caso_atencion
     template_name = 'casos/caso_list.html'
-    context_object_name = 'casos'
+    context_object_name = 'expedientes'
 
 class CasoCreateView(AdminRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
     fields = ['tipo', 'jerarquia_acoso', 'fecha', 'estatus', 'medidas']
-    success_url = reverse_lazy('casos_list')
+    success_url = reverse_lazy('expediente_list')
 
     def get_form(self,form_class=None):
         form = super().get_form(form_class)
@@ -26,14 +26,14 @@ class CasoCreateView(AdminRequiredMixin, CreateView):
         return form
 
     def form_valid(self, form):
-        messages.success(self.request, 'Caso registrado exitosamente.')
+        messages.success(self.request, 'Expediente registrado exitosamente.')
         return super().form_valid(form)
 
 class CasoUpdateView(AdminRequiredMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
     fields = ['tipo', 'fecha', 'estatus', 'medidas']
-    success_url = reverse_lazy('casos_list')
+    success_url = reverse_lazy('expediente_list')
 
     def get_form(self,form_class=None):
         form = super().get_form(form_class)
@@ -41,14 +41,14 @@ class CasoUpdateView(AdminRequiredMixin, UpdateView):
         return form
 
     def form_valid(self, form):
-        messages.success(self.request, 'Caso actualizado exitosamente.')
+        messages.success(self.request, 'Expediente actualizado exitosamente.')
         return super().form_valid(form)
 
 class CasoDeleteView(AdminRequiredMixin, DeleteView):
     model = Caso_atencion
     template_name = 'casos/caso_confirm_delete.html'
-    success_url = reverse_lazy('casos_list')
+    success_url = reverse_lazy('expediente_list')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, 'Caso eliminado exitosamente.')
+        messages.success(self.request, 'Expediente eliminado exitosamente.')
         return super().delete(request, *args, **kwargs)
