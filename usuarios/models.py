@@ -7,9 +7,11 @@ from django.utils import timezone
 
 class Rol(models.Model):
     roles = [
+        ('ADMIN', 'Administrador'),
         ('CAS', 'Comité de atención y seguimiento'),
         ('PC', 'Persona consejera'),
         ('CUG', 'Coordinación de unidad de género'),
+        ('RH', 'Recursos humanos'),
         ('PG', 'Personal general'),
     ]
 
@@ -42,7 +44,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     id_usuario = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     correo = models.EmailField(unique=True, help_text="Used as username")
-    id_rol = models.ForeignKey(Rol, on_delete=models.SET_NULL, null=True, blank=True)
+    id_rol = models.ForeignKey(Rol, on_delete=models.PROTECT, null=True, blank=True)
     estado = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     # ultimo_acceso is handled by AbstractBaseUser.last_login

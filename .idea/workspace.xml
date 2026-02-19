@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Los roles son visibles con la descripción asignada.">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="cambio de nomenclatura de casos/caso a Expediente/expedientes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_confirm_delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771448390069</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="cambio de nomenclatura de casos/caso a Expediente/expedientes">
+      <option name="closed" value="true" />
+      <created>1771522723122</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1771522723122</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,7 +280,8 @@
     <MESSAGE value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Modificado el campo fecha de text a date en Casos." />
     <MESSAGE value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Aparece la jerarquia si es que se trata de acoso laboral en la lista de Casos.&#10;Modificado el campo fecha de text a date en Casos." />
     <MESSAGE value="Los roles son visibles con la descripción asignada." />
-    <option name="LAST_COMMIT_MESSAGE" value="Los roles son visibles con la descripción asignada." />
+    <MESSAGE value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
