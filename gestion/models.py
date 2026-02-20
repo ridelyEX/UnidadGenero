@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 
 from casos.models import Caso_atencion
+from organizaciones.models import Persona
 
 
 class Actividad(models.Model):
@@ -76,6 +77,8 @@ class Capacitacion(models.Model):
     fecha = models.DateField()
     modalidad = models.CharField(max_length=50) # Presencial, Virtual, Hibrida
     certificacion = models.BooleanField(default=False)
+
+    participantes = models.ManyToManyField(Persona, related_name='capacitaciones')
 
     def __str__(self):
         return self.nombre
