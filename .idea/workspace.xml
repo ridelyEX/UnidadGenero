@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Modelos modificados para relaciones exactas e interacciones entre módulos">
-      <change afterPath="$PROJECT_DIR$/usuarios/decorators.py" afterDir="false" />
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/indicadores/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/indicadores/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -258,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771534741213</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py">
+      <option name="closed" value="true" />
+      <created>1771610876468</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1771610876468</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,7 +298,8 @@
     <MESSAGE value="Los roles son visibles con la descripción asignada." />
     <MESSAGE value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modelos modificados para relaciones exactas e interacciones entre módulos" />
+    <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

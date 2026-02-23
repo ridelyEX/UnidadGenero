@@ -16,20 +16,39 @@ class Rol(models.Model):
     ]
 
     PERMISOS_ROL =  {
+        # Tiene acceso total al sistema
+        'ADMIN': {
+            'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores', 'usuarios'],
+            'modificar': ['personas', 'acciones', 'expedientes', 'capacitaciones', 'indicadores', 'usuarios']
+        },
+
+        # Puede hacer consultas y modificaciones en general
         'CAS': {
             'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
-            'modificar': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores']
+            'modificar': ['acciones', 'expedientes', 'capacitaciones']
         },
+
+        # Solo puede hacer consultas y modificaciones de expedientes asignados
         'PC': {
             'ver': ['personas', 'acciones', 'expedientes', 'bitacoras'],
-            'modificar': ['personas', 'acciones', 'expedientes', 'bitacoras']
+            'modificar': ['acciones', 'expedientes']
         },
+
+        # No tiene acceso a contenido confidencial de expedientes
         'CUG': {
-            'ver': ['personas', 'capacitaciones', 'expedientes', 'bitacoras', 'indicadores'],
-            'modificar': ['personas', 'capacitaciones', 'expedientes', 'expedientes', 'bitacoras', 'indicadores']
+            'ver': ['personas', 'capacitaciones', 'indicadores'],
+            'modificar': ['capacitaciones', 'indicadores']
         },
+
+        # solo puede ver resoluciones finales de los expedientes, no los modifica
+        'RH': {
+            'ver': ['personas', 'capacitaciones', 'indicadores', 'expedientes'],
+            'modificar': ['personas', 'capacitaciones'],
+        },
+
+        # Solo puede consultar y crear su propio expediente. Verificar si puede consultar acciones
         'PG': {
-            'ver': ['accioens', 'capacitaciones', 'expedientes'],
+            'ver': ['capacitaciones', 'expedientes'], #acciones
             'modificar': ['expedientes']
         }
     }
@@ -83,7 +102,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['nombre']
 
     def __str__(self):
-        return self.correo
+        return f"{self.nombre}"
 
     def tiene_permiso_ver(self, seccion):
         if self.is_admin:

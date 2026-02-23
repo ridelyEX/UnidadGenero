@@ -24,27 +24,32 @@ class Caso_atencion(models.Model):
         ('HO', 'Horizontal'),
         ('VD', 'Vertical descendente'),
         ('VA', 'Vertical ascendente'),
+        ('N/A', 'No Aplica'),
     ]
 
     id_caso = models.AutoField(primary_key=True)
 
     # Personas involucradas en el caso
-    denunciante = models.ForeignKey('Persona', on_delete=SET_NULL, null=True, related_name='casos_denunciante')
-    denunciado = models.ForeignKey('Persona', on_delete=models.SET_NULL, null=True, related_name='casos_denunciado')
+    denunciante = models.ForeignKey('organizaciones.Persona', on_delete=SET_NULL, null=True, related_name='casos_denunciante')
+    denunciado = models.ForeignKey('organizaciones.Persona', on_delete=models.SET_NULL, null=True, related_name='casos_denunciado')
+
+    # Personal asignado al caso
     persona_consejera = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='casos_asignados')
-    comite_resolutor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='casos_resuetos')
+    # Persona que resuelve el caso, puede ser diferente a la persona consejera si el caso es escalado al comité de atención y seguimiento
+    comite_resolutor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='casos_resueltos')
+
     creado_por = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='casos_creados')
 
     # Folio único del caso
-    folio = models.CharField(max_length=30, unique=True)
+    folio = models.CharField(max_length=30, unique=True, null=True, blank=True)
 
     # Tipo de violencia denunciada
     tipo = models.CharField(max_length=100, choices=tipos_violencia)
-    jerarquia_acoso = models.CharField(max_length=2, choices=jerarquias_acoso, blank=True, null=True, verbose_name="Jerarquía de Acoso")
+    jerarquia_acoso = models.CharField(max_length=5, choices=jerarquias_acoso, blank=True, default='N/A', verbose_name="Jerarquía de Acoso")
 
     # Fecha de incidencia y cierre de expediente
     fecha = models.DateField()
-    fecha_cierre = models.DateTimeField(auto_now_add=True)
+    fecha_cierre = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     # Estatus del caso
     estatus = models.CharField(max_length=50, choices=estatus_choices) # Abierto, Cerrado, En Proceso

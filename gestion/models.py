@@ -24,7 +24,7 @@ class Bitacora(models.Model):
     id_usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     id_actividades = models.ForeignKey(Actividad, on_delete=models.CASCADE)
 
-    caso = models.ForeignKey(Caso_atencion, on_delete=models.CASCADE, related_name='bitacoras')
+    caso = models.ForeignKey(Caso_atencion, on_delete=models.CASCADE, related_name='bitacoras', null=True, blank=True)
 
     editable = models.BooleanField(default=False)
 
