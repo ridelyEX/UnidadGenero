@@ -21,7 +21,7 @@ class CasoListView(AdminRequiredMixin, ListView):
 class CasoCreateView(AdminRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'estatus', 'medidas', 'persona_consejera',]
+    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'estatus', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     ### Sobrescribir el método get_form para usar un widget de fecha
@@ -68,7 +68,7 @@ class CasoCreateView(AdminRequiredMixin, CreateView):
 class CasoUpdateView(AdminRequiredMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'fecha', 'estatus', 'persona_consejera', 'medidas']
+    fields = ['tipo', 'fecha', 'estatus', 'persona_consejera', 'resolucion']
     success_url = reverse_lazy('expediente_list')
 
     def get_form(self,form_class=None):
@@ -88,6 +88,16 @@ class CasoUpdateView(AdminRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request, 'Expediente actualizado exitosamente.')
+        return super().form_valid(form)
+
+class CasoCloseView(AdminRequiredMixin, UpdateView):
+    model = Caso_atencion
+    template_name = 'casos/caso_close.html'
+    fields = ['acta_cierre', 'resolucion']
+    success_url = reverse_lazy('expediente_list')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Expediente cerrado.')
         return super().form_valid(form)
 
 class CasoDeleteView(AdminRequiredMixin, DeleteView):

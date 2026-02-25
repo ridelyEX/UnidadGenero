@@ -63,7 +63,8 @@ class Caso_atencion(models.Model):
                                                 ],
                                                 default='ALTO'
                                             )
-    medidas = models.TextField(blank=True, null=True)
+    resolucion = models.TextField(blank=True, null=True)
+    acta_cierre = models.FileField(upload_to='actas/', verbose_name='actas', blank=True, null=True)
 
     def __str__(self):
         return f"Caso {self.id_caso} - {self.tipo}"

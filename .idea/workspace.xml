@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py">
+      <change afterPath="$PROJECT_DIR$/templates/casos/caso_close.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
