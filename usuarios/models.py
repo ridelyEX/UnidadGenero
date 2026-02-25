@@ -5,6 +5,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
+import permisos
+
+'''
 class Rol(models.Model):
     roles = [
         ('ADMIN', 'Administrador'),
@@ -65,6 +68,7 @@ class Rol(models.Model):
 
     def puede_modificar(self, seccion):
         return seccion in self.PERMISOS_ROL.get(self.nombre_rol, {}).get('modificaciones', [])
+'''
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, correo, password=None, **extra_fields):
@@ -88,7 +92,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     id_usuario = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     correo = models.EmailField(unique=True, help_text="Used as username")
-    id_rol = models.ForeignKey(Rol, on_delete=models.PROTECT, null=True, blank=True)
+    id_rol = models.ForeignKey('permisos.Rol', on_delete=models.SET_NULL, null=True, blank=True)
     estado = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     # ultimo_acceso is handled by AbstractBaseUser.last_login
@@ -104,18 +108,21 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f"{self.nombre}"
 
-    def tiene_permiso_ver(self, seccion):
+    def tiene_permiso(self, codigo_permiso):
         if self.is_admin:
             return True
         if self.id_rol:
-            return self.id_rol.puede_ver(seccion)
+            return self.id_rol.permisos.filter(codigo=codigo_permiso).exists()
         return False
 
-    def tiene_permiso_modificar(self, seccion):
+    def tiene_permiso_modulo(self, modulo, accion):
         if self.is_admin:
             return True
         if self.id_rol:
-            return self.id_rol.puede_modificar(seccion)
+            return self.id_rol.permisos.filter(
+                modulo=modulo,
+                accion=accion,
+            ).exists()
         return False
 
     def es_cas(self):
@@ -134,4 +141,19 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     def is_staff(self):
         return self.is_admin
 
+"""
+    def tiene_permiso_ver(self, seccion):
+        if self.is_admin:
+            return True
+        if self.id_rol:
+            return self.id_rol.puede_ver(seccion)
+        return False
+
+    def tiene_permiso_modificar(self, seccion):
+        if self.is_admin:
+            return True
+        if self.id_rol:
+            return self.id_rol.puede_modificar(seccion)
+        return False
+"""
 

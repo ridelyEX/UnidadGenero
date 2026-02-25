@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'gestion',
     'casos',
     'indicadores',
+    'permisos',
 ]
 
 AUTH_USER_MODEL = 'usuarios.Usuario'

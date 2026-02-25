@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Generación de folios para los casos en casos/views.py y asignación de persona consejera.">
+      <change afterPath="$PROJECT_DIR$/permisos/decorators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/permisos/middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/permisos/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidad_genero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +43,11 @@
         <option name="title" value="Current Branch" />
       </GitPushTagMode>
     </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -70,19 +76,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Usuario/Documents/UnidadDeGenero/casos&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "granular",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Usuario/Documents/UnidadDeGenero/casos",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Usuario\Documents\UnidadDeGenero\casos" />
@@ -266,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771610876468</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Generación de folios para los casos en casos/views.py y asignación de persona consejera.">
+      <option name="closed" value="true" />
+      <created>1771881384765</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1771881384765</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,7 +313,8 @@
     <MESSAGE value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
+    <MESSAGE value="Generación de folios para los casos en casos/views.py y asignación de persona consejera." />
+    <option name="LAST_COMMIT_MESSAGE" value="Generación de folios para los casos en casos/views.py y asignación de persona consejera." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
