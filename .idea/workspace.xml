@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="logs añadidos a settings.py, cambio de estatus a &quot;En proceso&quot; cuando se asigna una persona consejera a un expediente">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Cierre de casos completado por medio de actas de cierre y resolución. La plantilla se actualiza según el estado del expediente.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_close.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_close.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772130476207</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Cierre de casos completado por medio de actas de cierre y resolución. La plantilla se actualiza según el estado del expediente.">
+      <option name="closed" value="true" />
+      <created>1772133474117</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1772133474117</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -317,7 +323,8 @@
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
     <MESSAGE value="creación de cierre de expedientes por medio de actas y resolución" />
     <MESSAGE value="logs añadidos a settings.py, cambio de estatus a &quot;En proceso&quot; cuando se asigna una persona consejera a un expediente" />
-    <option name="LAST_COMMIT_MESSAGE" value="logs añadidos a settings.py, cambio de estatus a &quot;En proceso&quot; cuando se asigna una persona consejera a un expediente" />
+    <MESSAGE value="Cierre de casos completado por medio de actas de cierre y resolución. La plantilla se actualiza según el estado del expediente." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cierre de casos completado por medio de actas de cierre y resolución. La plantilla se actualiza según el estado del expediente." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

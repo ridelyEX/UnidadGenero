@@ -23,7 +23,7 @@ class CasoListView(AdminRequiredMixin, ListView):
 class CasoCreateView(AdminRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'persona_consejera',]
+    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     ### Sobrescribir el método get_form para usar un widget de fecha
@@ -46,10 +46,15 @@ class CasoCreateView(AdminRequiredMixin, CreateView):
     def form_valid(self, form):
         # Generar folio único basado en el tipo de caso
         form.instance.folio = self.folio(form.instance.tipo)
-
         # Si el tipo no es ACL, establecer jerarquía de acoso como 'N/A'
         if form.instance.tipo != 'ACL':
             form.instance.jerarquia_acoso = 'N/A'
+
+        if form.instance.persona_consejera:
+            form.instance.estatus = 'En Proceso'
+            logger.info(f"Caso creado con estatus 'En Proceso'")
+        else:
+            logger.info(f"Caso creado con estatus 'Abierto'")
 
         messages.success(self.request, 'Expediente registrado exitosamente.')
         return super().form_valid(form)

@@ -14,8 +14,9 @@
             <tr>
                 <th>ID</th>
                 <th>Tipo</th>
-                <th>Fecha</th>
+                <th>Fecha incidencia</th>
                 <th>Estatus</th>
+                <th>Asignado a</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -27,6 +28,13 @@
                 <td>{{ caso.fecha }}</td>
                 <td>{{ caso.estatus }}</td>
                 <td>
+                    {% if caso.persona_consejera %}
+                    {{ caso.persona_consejera }}
+                    {% else %}
+                    Sin asignar
+                    {% endif %}
+                </td>
+                <td>
                     {% if caso.estatus == 'Abierto' or caso.estatus == 'En Proceso' %}
                     <a href="{% url 'expediente_update' caso.pk %}" class="btn btn-sm btn-primary"><i
                             class="bi bi-pencil"></i></a>
@@ -35,7 +43,7 @@
                     <a href="{% url 'expediente_delete' caso.pk %}" class="btn btn-sm btn-danger"><i
                             class="bi bi-trash"></i></a>
                     {% else %}
-                    <p>Expediente cerrado</p>
+                    Expediente Cerrado
                     {% endif %}
                 </td>
             </tr>
