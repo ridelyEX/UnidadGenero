@@ -27,12 +27,16 @@
                 <td>{{ caso.fecha }}</td>
                 <td>{{ caso.estatus }}</td>
                 <td>
+                    {% if caso.estatus == 'Abierto' or caso.estatus == 'En Proceso' %}
                     <a href="{% url 'expediente_update' caso.pk %}" class="btn btn-sm btn-primary"><i
                             class="bi bi-pencil"></i></a>
                     <a href="{% url 'expediente_cerrar' caso.pk %}" class="btn btn-sm btn-warning"><i
                             class="bi bi-shield-lock"></i></a>
                     <a href="{% url 'expediente_delete' caso.pk %}" class="btn btn-sm btn-danger"><i
                             class="bi bi-trash"></i></a>
+                    {% else %}
+                    <p>Expediente cerrado</p>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}

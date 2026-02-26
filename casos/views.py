@@ -117,11 +117,29 @@ class CasoCloseView(AdminRequiredMixin, UpdateView):
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        form.fields['acta_cierre'].widget = forms.TextInput(attrs={'type': 'file', 'class': 'form-control'})
-        form.fields['resolucion'].widget = forms.TextInput(attrs={'class': 'form-control'})
+        form.fields['acta_cierre'].widget = forms.FileInput(attrs={'type': 'file', 'class': 'form-control'})
+        form.fields['resolucion'].widget = forms.Textarea(attrs={'class': 'form-control'})
         return form
 
+    def status_change(self):
+        caso = self.object
+
+        if caso.persona_consejera and caso.estatus == 'En Proceso' and caso.acta_cierre and caso.resolucion:
+            caso.estatus = 'Cerrado'
+            logger.info(f"Expediente cerrado")
+            return 'Cerrado'
+
+        logger.debug(f"El expediente no fue cerrado")
+        return caso.estatus
+
     def form_valid(self, form):
+
+        self.object = form.save(commit=False)
+
+        self.status_change()
+
+        self.object.save()
+
         messages.success(self.request, 'Expediente cerrado.')
         return super().form_valid(form)
 

@@ -52,7 +52,7 @@ class Caso_atencion(models.Model):
     fecha_cierre = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     # Estatus del caso
-    estatus = models.CharField(max_length=50, choices=estatus_choices) # Abierto, Cerrado, En Proceso
+    estatus = models.CharField(max_length=50, choices=estatus_choices, default='Abierto') # Abierto, Cerrado, En Proceso
 
     # Nivel de confidencialidad y medidas tomadas
     nivel_confidencialidad = models.CharField(max_length=20,
