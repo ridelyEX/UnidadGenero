@@ -1,11 +1,13 @@
 from hmac import new
-
+import logging
 from django import forms
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Caso_atencion
+
+logger = logging.getLogger(__name__)
 
 # Mixin para requerir que el usuario sea administrador
 class AdminRequiredMixin(UserPassesTestMixin):
@@ -21,7 +23,7 @@ class CasoListView(AdminRequiredMixin, ListView):
 class CasoCreateView(AdminRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'estatus', 'persona_consejera',]
+    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     ### Sobrescribir el método get_form para usar un widget de fecha
@@ -32,7 +34,7 @@ class CasoCreateView(AdminRequiredMixin, CreateView):
         if 'persona_consejera' in form.fields:
             from usuarios.models import Usuario
             queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
-            print(f"{queryset.count()}")
+            logger.info(f"Usuarios que son personas consejeras: {queryset.count()}")
             form.fields['persona_consejera'].queryset = queryset
 
             form.fields['persona_consejera'].empty_label = "Asignar consejero(a)"
@@ -68,7 +70,7 @@ class CasoCreateView(AdminRequiredMixin, CreateView):
 class CasoUpdateView(AdminRequiredMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'fecha', 'estatus', 'persona_consejera', 'resolucion']
+    fields = ['tipo', 'fecha', 'persona_consejera', 'resolucion']
     success_url = reverse_lazy('expediente_list')
 
     def get_form(self,form_class=None):
@@ -78,7 +80,7 @@ class CasoUpdateView(AdminRequiredMixin, UpdateView):
         if 'persona_consejera' in form.fields:
             from usuarios.models import Usuario
             queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
-            print(f"{queryset.count()}")
+            logger.info(f"Personas consejeras encontradas: {queryset.count()}")
             form.fields['persona_consejera'].queryset = queryset
 
             form.fields['persona_consejera'].empty_label = "Asignar consejero(a)"
@@ -86,7 +88,24 @@ class CasoUpdateView(AdminRequiredMixin, UpdateView):
 
         return form
 
+    def status_change(self):
+        caso = self.object
+
+        if caso.persona_consejera and caso.estatus == 'Abierto':
+            caso.estatus = 'En Proceso'
+            logger.info(f"Estatus del caso cambiado")
+            return 'En Proceso'
+
+        logger.debug(f"El estatus no fue cambiado")
+        return caso.estatus
+
     def form_valid(self, form):
+        self.object = form.save(commit=False)
+
+        self.status_change()
+
+        self.object.save()
+
         messages.success(self.request, 'Expediente actualizado exitosamente.')
         return super().form_valid(form)
 
@@ -95,6 +114,12 @@ class CasoCloseView(AdminRequiredMixin, UpdateView):
     template_name = 'casos/caso_close.html'
     fields = ['acta_cierre', 'resolucion']
     success_url = reverse_lazy('expediente_list')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['acta_cierre'].widget = forms.TextInput(attrs={'type': 'file', 'class': 'form-control'})
+        form.fields['resolucion'].widget = forms.TextInput(attrs={'class': 'form-control'})
+        return form
 
     def form_valid(self, form):
         messages.success(self.request, 'Expediente cerrado.')
