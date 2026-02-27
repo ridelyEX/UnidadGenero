@@ -1,6 +1,7 @@
 from hmac import new
 import logging
 from django import forms
+from django.utils import timezone
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
@@ -20,11 +21,23 @@ class CasoListView(AdminRequiredMixin, ListView):
     context_object_name = 'expedientes'
 
 # Vista para crear un nuevo caso de atención, con generación automática de folio y manejo de jerarquía de acoso
-class CasoCreateView(AdminRequiredMixin, CreateView):
+class CasoCreateView(LoginRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'persona_consejera',]
+    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
+
+    def get_form_class(self):
+        base_fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciado']
+
+        if self.request.user.id_rol or (self.request.user.id_rol and self.request.user.id_rol.nombre_rol == 'CAS'):
+            self.fields = base_fields + ['denunciante', 'medidas_proteccion', 'persona_consejera']
+        elif self.request.user.id_rol and self.request.user.id_rol.nombre_rol == 'PC':
+            self.fields = base_fields + ['denunciante']
+        else:
+            self.fields = base_fields + ['denunciante']
+
+        return super().get_form_class()
 
     ### Sobrescribir el método get_form para usar un widget de fecha
     def get_form(self,form_class=None):
@@ -137,11 +150,25 @@ class CasoCloseView(AdminRequiredMixin, UpdateView):
         logger.debug(f"El expediente no fue cerrado")
         return caso.estatus
 
+    def close_date(self):
+        caso = self.object
+
+        if caso.persona_consejera and caso.estatus == 'Cerrado':
+            caso.fecha_cierre = timezone.now()
+            logger.info(f"Fecha de cierre: {caso.fecha_cierre}")
+            return caso.fecha_cierre
+
+        logger.debug(f"No hay fecha de cierre asignada")
+        return caso.fecha_cierre
+
     def form_valid(self, form):
 
         self.object = form.save(commit=False)
 
+        # Cambia el estado del caso a cerrado
         self.status_change()
+        # Asigna la fecha de cierre del caso
+        self.close_date()
 
         self.object.save()
 

@@ -46,10 +46,13 @@ class Caso_atencion(models.Model):
     # Tipo de violencia denunciada
     tipo = models.CharField(max_length=100, choices=tipos_violencia)
     jerarquia_acoso = models.CharField(max_length=5, choices=jerarquias_acoso, blank=True, default='N/A', verbose_name="Jerarquía de Acoso")
+    # Descripción de las medidas de protección tomadas
+    medidas_proteccion = models.TextField(blank=True, null=True)
 
     # Fecha de incidencia y cierre de expediente
     fecha = models.DateField()
-    fecha_cierre = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    fecha_cierre = models.DateTimeField(blank=True, null=True)
 
     # Estatus del caso
     estatus = models.CharField(max_length=50, choices=estatus_choices, default='Abierto') # Abierto, Cerrado, En Proceso
