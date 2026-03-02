@@ -1,12 +1,14 @@
 from hmac import new
 import logging
 from django import forms
+from django.db import models
 from django.utils import timezone
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Caso_atencion
+from django.db.models import Q
 
 logger = logging.getLogger(__name__)
 
@@ -15,16 +17,33 @@ class AdminRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_authenticated and self.request.user.is_admin
 
-class CasoListView(AdminRequiredMixin, ListView):
+class CasoListView(LoginRequiredMixin, ListView):
     model = Caso_atencion
     template_name = 'casos/caso_list.html'
     context_object_name = 'expedientes'
+
+    def get_queryset(self):
+        user = self.request.user
+
+        if user.is_admin or (user.id_rol and user.id_rol.nombre_rol == 'CAS'):
+            return Caso_atencion.objects.all()
+
+        elif user.id_rol and user.id_rol.nombre_rol == 'PC':
+            return Caso_atencion.objects.filter(persona_consejera=user)
+
+        else:
+            if hasattr(user, 'persona'):
+                return Caso_atencion.objects.filter(
+                    models.Q(denunciante=user.persona) | models.Q(denunciado=user.persona)
+                )
+            else:
+                return Caso_atencion.objects.none()
 
 # Vista para crear un nuevo caso de atención, con generación automática de folio y manejo de jerarquía de acoso
 class CasoCreateView(LoginRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
+    #fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     def get_form_class(self):
@@ -63,10 +82,19 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
         if form.instance.tipo != 'ACL':
             form.instance.jerarquia_acoso = 'N/A'
 
+        user = self.request.user
+        if not user.is_admin and not (user.id_rol and user.id_rol.nombre_rol in ['CAS', 'PC']):
+            if hasattr(user, 'persona'):
+                form.instance.denunciante = user.persona
+            else:
+                messages.error(self.request, 'El usuario no tiene persona asociada.')
+                return self.form_invalid(form)
+
         if form.instance.persona_consejera:
             form.instance.estatus = 'En Proceso'
             logger.info(f"Caso creado con estatus 'En Proceso'")
         else:
+            form.instance.estatus = 'Abierto'
             logger.info(f"Caso creado con estatus 'Abierto'")
 
         messages.success(self.request, 'Expediente registrado exitosamente.')

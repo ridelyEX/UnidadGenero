@@ -51,6 +51,7 @@ class Persona(models.Model):
     curp = models.CharField(max_length=18, blank=True, null=True)
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
     cargo = models.CharField(max_length=100)
+    num_empleado = models.IntegerField(max_length=6, blank=True, null=True)
     puesto = models.CharField(max_length=100, choices=puestos, blank=True, null=True)
     departamento = models.CharField(max_length=100, choices=departamentos, blank=True, null=True)
     activo = models.BooleanField(default=True)

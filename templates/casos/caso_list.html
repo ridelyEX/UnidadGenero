@@ -36,12 +36,16 @@
                 </td>
                 <td>
                     {% if caso.estatus == 'Abierto' or caso.estatus == 'En Proceso' %}
-                    <a href="{% url 'expediente_update' caso.pk %}" class="btn btn-sm btn-primary"><i
-                            class="bi bi-pencil"></i></a>
-                    <a href="{% url 'expediente_cerrar' caso.pk %}" class="btn btn-sm btn-warning"><i
-                            class="bi bi-shield-lock"></i></a>
-                    <a href="{% url 'expediente_delete' caso.pk %}" class="btn btn-sm btn-danger"><i
-                            class="bi bi-trash"></i></a>
+                        {% if user.is_admin or user.id_rol.nombre_rol == 'CAS' %}
+                            <a href="{% url 'expediente_update' caso.pk %}" class="btn btn-sm btn-primary"><i
+                                class="bi bi-pencil"></i></a>
+                            <a href="{% url 'expediente_cerrar' caso.pk %}" class="btn btn-sm btn-warning"><i
+                                class="bi bi-shield-lock"></i></a>
+                            <a href="{% url 'expediente_delete' caso.pk %}" class="btn btn-sm btn-danger"><i
+                                class="bi bi-trash"></i></a>
+                        {% else %}
+                            <p>Consulta con tu consejero</p>
+                        {% endif %}
                     {% else %}
                     Expediente Cerrado
                     {% endif %}

@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="actualización de los expedientes según la forma de creación (si tiene persona consejera estado: En proceso, sin persona consejera estado: Abierto.">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="expedientes modificados en casos/views.py para campos según el usuario">
+      <change afterPath="$PROJECT_DIR$/organizaciones/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organizaciones/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organizaciones/management/commands/importar_personas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/casos/caso_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -92,7 +99,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-4762d8aabb82-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.30387.173" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
       </set>
     </attachedChunks>
   </component>
@@ -296,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772139139096</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="expedientes modificados en casos/views.py para campos según el usuario">
+      <option name="closed" value="true" />
+      <created>1772222076949</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772222076949</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -333,7 +348,8 @@
     <MESSAGE value="logs añadidos a settings.py, cambio de estatus a &quot;En proceso&quot; cuando se asigna una persona consejera a un expediente" />
     <MESSAGE value="Cierre de casos completado por medio de actas de cierre y resolución. La plantilla se actualiza según el estado del expediente." />
     <MESSAGE value="actualización de los expedientes según la forma de creación (si tiene persona consejera estado: En proceso, sin persona consejera estado: Abierto." />
-    <option name="LAST_COMMIT_MESSAGE" value="actualización de los expedientes según la forma de creación (si tiene persona consejera estado: En proceso, sin persona consejera estado: Abierto." />
+    <MESSAGE value="expedientes modificados en casos/views.py para campos según el usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="expedientes modificados en casos/views.py para campos según el usuario" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

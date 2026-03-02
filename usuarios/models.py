@@ -91,6 +91,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     id_rol = models.ForeignKey(Rol, on_delete=models.PROTECT, null=True, blank=True)
     estado = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    persona = models.OneToOneField('organizaciones.Persona', on_delete=models.CASCADE, null=True, blank=True, related_name='usuario')
     # ultimo_acceso is handled by AbstractBaseUser.last_login
 
     is_active = models.BooleanField(default=True)

@@ -15,7 +15,16 @@
                     {% for field in form %}
                     <div class="mb-3">
                         <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                        {{ field }}
+                        {% if field.name == 'persona_consejera' or field.name == 'medidas_proteccion' %}
+                            {%  if user.is_admin or user.id_rol.nombre_rol == 'CAS' %}
+                                {{ field }}
+                            {% else %}
+                            <P class="form-control-plaintext">Campo restringido</P>
+                            {% endif %}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+
                         {% if field.help_text %}
                         <div class="form-text">{{ field.help_text }}</div>
                         {% endif %}
