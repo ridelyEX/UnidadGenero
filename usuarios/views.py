@@ -43,8 +43,8 @@ class UsuarioCreateView(LoginRequiredMixin, CreateView):
         persona_seleccionada = form.cleaned_data.get('persona')
 
         try:
-            if persona_seleccionada.usuario:
-                messages.error(self.request, 'Esta perosona ya tiene un usuario asociado')
+            if Usuario.objects.filter(persona=persona_seleccionada).exists():
+                messages.error(self.request, 'Esta persona ya tiene un usuario asociado')
                 return self.form_invalid(form)
         except Usuario.DoesNotExist:
             pass
