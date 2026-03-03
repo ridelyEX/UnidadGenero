@@ -2,6 +2,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
+
+from casos.mixins import VocalOSuperiorMixin
 from .models import Actividad, Documento, Bitacora
 
 # --- Actividad Views ---
@@ -10,7 +12,7 @@ class ActividadListView(LoginRequiredMixin, ListView):
     template_name = 'gestion/actividad_list.html'
     context_object_name = 'actividades'
 
-class ActividadCreateView(LoginRequiredMixin, CreateView):
+class ActividadCreateView(VocalOSuperiorMixin, CreateView):
     model = Actividad
     template_name = 'gestion/actividad_form.html'
     fields = ['tipo_actividad', 'objetivo', 'fecha_inicio', 'estatus', 'id_usuario_responsable']
@@ -20,7 +22,7 @@ class ActividadCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Actividad creada correctamente.')
         return super().form_valid(form)
 
-class ActividadUpdateView(LoginRequiredMixin, UpdateView):
+class ActividadUpdateView(VocalOSuperiorMixin, UpdateView):
     model = Actividad
     template_name = 'gestion/actividad_form.html'
     fields = ['tipo_actividad', 'objetivo', 'fecha_inicio', 'estatus', 'id_usuario_responsable']
@@ -30,7 +32,7 @@ class ActividadUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'Actividad actualizada correctamente.')
         return super().form_valid(form)
 
-class ActividadDeleteView(LoginRequiredMixin, DeleteView):
+class ActividadDeleteView(VocalOSuperiorMixin, DeleteView):
     model = Actividad
     template_name = 'gestion/actividad_confirm_delete.html'
     success_url = reverse_lazy('actividades_list')
@@ -68,7 +70,7 @@ class DocumentoDeleteView(LoginRequiredMixin, DeleteView):
 
 
 # --- Bitacora Views ---
-class BitacoraListView(LoginRequiredMixin, ListView):
+class BitacoraListView(VocalOSuperiorMixin, ListView):
     model = Bitacora
     template_name = 'gestion/bitacora_list.html'
     context_object_name = 'registros'
@@ -77,12 +79,12 @@ class BitacoraListView(LoginRequiredMixin, ListView):
 # --- Capacitacion Views ---
 from .models import Capacitacion
 
-class CapacitacionListView(LoginRequiredMixin, ListView):
+class CapacitacionListView(VocalOSuperiorMixin, ListView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_list.html'
     context_object_name = 'capacitaciones'
 
-class CapacitacionCreateView(LoginRequiredMixin, CreateView):
+class CapacitacionCreateView(VocalOSuperiorMixin, CreateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
     fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
@@ -92,7 +94,7 @@ class CapacitacionCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Capacitación registrada correctamente.')
         return super().form_valid(form)
 
-class CapacitacionUpdateView(LoginRequiredMixin, UpdateView):
+class CapacitacionUpdateView(VocalOSuperiorMixin, UpdateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
     fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
@@ -102,7 +104,7 @@ class CapacitacionUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'Capacitación actualizada correctamente.')
         return super().form_valid(form)
 
-class CapacitacionDeleteView(LoginRequiredMixin, DeleteView):
+class CapacitacionDeleteView(VocalOSuperiorMixin, DeleteView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_confirm_delete.html'
     success_url = reverse_lazy('capacitaciones_list')

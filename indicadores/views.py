@@ -2,14 +2,16 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
+
+from casos.mixins import VocalOSuperiorMixin
 from .models import Indicador
 
-class IndicadorListView(LoginRequiredMixin, ListView):
+class IndicadorListView(VocalOSuperiorMixin, ListView):
     model = Indicador
     template_name = 'indicadores/indicador_list.html'
     context_object_name = 'indicadores'
 
-class IndicadorCreateView(LoginRequiredMixin, CreateView):
+class IndicadorCreateView(VocalOSuperiorMixin, CreateView):
     model = Indicador
     template_name = 'indicadores/indicador_form.html'
     fields = ['nombre', 'descripcion', 'tipo', 'periodicidad', 'fecha']
@@ -19,7 +21,7 @@ class IndicadorCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Indicador registrado correctamente.')
         return super().form_valid(form)
 
-class IndicadorUpdateView(LoginRequiredMixin, UpdateView):
+class IndicadorUpdateView(VocalOSuperiorMixin, UpdateView):
     model = Indicador
     template_name = 'indicadores/indicador_form.html'
     fields = ['nombre', 'descripcion', 'tipo', 'periodicidad', 'fecha']
@@ -29,7 +31,7 @@ class IndicadorUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'Indicador actualizado correctamente.')
         return super().form_valid(form)
 
-class IndicadorDeleteView(LoginRequiredMixin, DeleteView):
+class IndicadorDeleteView(VocalOSuperiorMixin, DeleteView):
     model = Indicador
     template_name = 'indicadores/indicador_confirm_delete.html'
     success_url = reverse_lazy('indicadores_list')

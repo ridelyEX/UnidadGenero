@@ -8,10 +8,9 @@ from django.utils import timezone
 class Rol(models.Model):
     roles = [
         ('ADMIN', 'Administrador'),
-        ('CAS', 'Comité de atención y seguimiento'),
-        ('PC', 'Persona consejera'),
-        ('CUG', 'Coordinación de unidad de género'),
-        ('RH', 'Recursos humanos'),
+        ('COORD', 'Coordinador'),
+        ('VOC', 'Vocal'),
+        ('SEC', 'Secretaria'),
         ('PG', 'Personal general'),
     ]
 
@@ -23,27 +22,21 @@ class Rol(models.Model):
         },
 
         # Puede hacer consultas y modificaciones en general
-        'CAS': {
+        'COORD': {
             'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
-            'modificar': ['acciones', 'expedientes', 'capacitaciones']
+            'modificar': ['expedientes', 'capacitaciones', 'indicadores']
         },
 
         # Solo puede hacer consultas y modificaciones de expedientes asignados
-        'PC': {
-            'ver': ['personas', 'acciones', 'expedientes', 'bitacoras'],
-            'modificar': ['acciones', 'expedientes']
+        'VOC': {
+            'ver': ['acciones', 'expedientes', 'bitacoras', 'capacitacione', 'indicadores'],
+            'modificar': ['acciones', 'expedientes', 'indicadores']
         },
 
         # No tiene acceso a contenido confidencial de expedientes
-        'CUG': {
-            'ver': ['personas', 'capacitaciones', 'indicadores'],
-            'modificar': ['capacitaciones', 'indicadores']
-        },
-
-        # solo puede ver resoluciones finales de los expedientes, no los modifica
-        'RH': {
-            'ver': ['personas', 'capacitaciones', 'indicadores', 'expedientes'],
-            'modificar': ['personas', 'capacitaciones'],
+        'SEC': {
+            'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
+            'modificar': ['expedientes', 'capacitaciones', 'indicadores']
         },
 
         # Solo puede consultar y crear su propio expediente. Verificar si puede consultar acciones
@@ -64,7 +57,7 @@ class Rol(models.Model):
         return seccion in self.PERMISOS_ROL.get(self.nombre_rol, {}).get('ver', [])
 
     def puede_modificar(self, seccion):
-        return seccion in self.PERMISOS_ROL.get(self.nombre_rol, {}).get('modificaciones', [])
+        return seccion in self.PERMISOS_ROL.get(self.nombre_rol, {}).get('modificar', [])
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, correo, password=None, **extra_fields):
@@ -119,14 +112,14 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
             return self.id_rol.puede_modificar(seccion)
         return False
 
-    def es_cas(self):
-        return self.id_rol and self.id_rol.nombre_rol == 'CAS'
+    def es_coordinador(self):
+        return self.id_rol and self.id_rol.nombre_rol == 'COORD'
 
-    def es_pc(self):
-        return self.id_rol and self.id_rol.nombre_rol == 'PC'
+    def es_vocal(self):
+        return self.id_rol and self.id_rol.nombre_rol == 'VOC'
 
-    def es_cug(self):
-        return self.id_rol and self.id_rol.nombre_rol == 'CUG'
+    def es_secretaria(self):
+        return self.id_rol and self.id_rol.nombre_rol == 'SEC'
 
     def es_pg(self):
         return self.id_rol and self.id_rol.nombre_rol == 'PG'

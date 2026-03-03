@@ -7,6 +7,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
+
+from .mixins import CoordinadorRequiredMixin
 from .models import Caso_atencion
 from django.db.models import Q
 
@@ -25,10 +27,10 @@ class CasoListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         user = self.request.user
 
-        if user.is_admin or (user.id_rol and user.id_rol.nombre_rol == 'CAS'):
+        if user.is_admin or user.es_coordinador():
             return Caso_atencion.objects.all()
 
-        elif user.id_rol and user.id_rol.nombre_rol == 'PC':
+        elif user.es_vocal() and user.es_secretaria():
             return Caso_atencion.objects.filter(persona_consejera=user)
 
         else:
@@ -49,9 +51,9 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
     def get_form_class(self):
         base_fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciado']
 
-        if self.request.user.id_rol or (self.request.user.id_rol and self.request.user.id_rol.nombre_rol == 'CAS'):
+        if self.request.user.is_admin or self.request.user.es_coordinador():
             self.fields = base_fields + ['denunciante', 'medidas_proteccion', 'persona_consejera']
-        elif self.request.user.id_rol and self.request.user.id_rol.nombre_rol == 'PC':
+        elif self.request.user.es_vocal() and self.request.user.es_secretaria():
             self.fields = base_fields + ['denunciante']
         else:
             self.fields = base_fields + ['denunciante']
@@ -113,7 +115,7 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
             new_number = 1
         return f'CASO-{tipo}-{new_number:04d}'
 
-class CasoUpdateView(AdminRequiredMixin, UpdateView):
+class CasoUpdateView(CoordinadorRequiredMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
     fields = ['tipo', 'fecha', 'persona_consejera', 'resolucion']
@@ -155,7 +157,7 @@ class CasoUpdateView(AdminRequiredMixin, UpdateView):
         messages.success(self.request, 'Expediente actualizado exitosamente.')
         return super().form_valid(form)
 
-class CasoCloseView(AdminRequiredMixin, UpdateView):
+class CasoCloseView(CoordinadorRequiredMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_close.html'
     fields = ['acta_cierre', 'resolucion']
@@ -203,7 +205,7 @@ class CasoCloseView(AdminRequiredMixin, UpdateView):
         messages.success(self.request, 'Expediente cerrado.')
         return super().form_valid(form)
 
-class CasoDeleteView(AdminRequiredMixin, DeleteView):
+class CasoDeleteView(CoordinadorRequiredMixin, DeleteView):
     model = Caso_atencion
     template_name = 'casos/caso_confirm_delete.html'
     success_url = reverse_lazy('expediente_list')

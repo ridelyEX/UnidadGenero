@@ -7,25 +7,29 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 
 from organizaciones.models import Persona
+from .mixins import RolRequiredMixin
 from .models import Usuario, Rol
 from django import forms
 
 logger = logging.getLogger(__name__)
 
-class UsuarioListView(LoginRequiredMixin, ListView):
+class UsuarioListView(RolRequiredMixin, ListView):
     model = Usuario
+    roles_permitidos = ['ADMIN', 'COORD']
     template_name = 'usuarios/usuario_list.html'
     context_object_name = 'usuarios'
 
-class UsuarioCreateView(LoginRequiredMixin, CreateView):
+class UsuarioCreateView(RolRequiredMixin, CreateView):
     model = Usuario
     template_name = 'usuarios/usuario_form.html'
-    fields = ['nombre', 'correo', 'password', 'persona','id_rol', 'is_active', 'is_admin']
+    fields = ['persona', 'nombre', 'correo', 'password', 'id_rol', 'is_active', 'is_admin']
     success_url = reverse_lazy('usuarios_list')
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
         form.fields['id_rol'].label_from_instance = lambda obj: f"{obj.descripcion}"
+        form.fields['persona'].empty_label = 'Servidor público'
+        form.fields['persona'].widget.attrs.update({'class': 'form-control'})
 
         form.fields['persona'].queryset = Persona.objects.filter(usuario__isnull=True)
         form.fields['persona'].label_from_instance = lambda obj: f"{obj.nombre}"
@@ -56,7 +60,7 @@ class UsuarioCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Usuario creado exitosamente.')
         return super().form_valid(form)
 
-class UsuarioUpdateView(LoginRequiredMixin, UpdateView):
+class UsuarioUpdateView(RolRequiredMixin, UpdateView):
     model = Usuario
     template_name = 'usuarios/usuario_form.html'
     fields = ['nombre', 'correo', 'id_rol', 'is_active', 'is_admin']
@@ -71,7 +75,7 @@ class UsuarioUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'Usuario actualizado exitosamente.')
         return super().form_valid(form)
 
-class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
+class UsuarioDeleteView(RolRequiredMixin, DeleteView):
     model = Usuario
     template_name = 'usuarios/usuario_confirm_delete.html'
     success_url = reverse_lazy('usuarios_list')
