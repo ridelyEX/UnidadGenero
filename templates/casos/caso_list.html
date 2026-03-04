@@ -12,7 +12,7 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Folio</th>
                 <th>Tipo</th>
                 <th>Fecha incidencia</th>
                 <th>Estatus</th>
@@ -23,8 +23,8 @@
         <tbody>
             {% for caso in expedientes %}
             <tr>
-                <td>{{ caso.id_caso }}</td>
-                <td>{{ caso.get_tipo_display }} {% if caso.tipo == 'ACL' %} ({{ caso.get_jerarquia_acoso_display }}) {% else %}  {% endif %}</td>
+                <td>{{ caso.folio }}</td>
+                <td>{{ caso.get_tipo_display }} ({{ caso.get_jerarquia_acoso_display }})</td>
                 <td>{{ caso.fecha }}</td>
                 <td>{{ caso.estatus }}</td>
                 <td>
@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     {% if caso.estatus == 'Abierto' or caso.estatus == 'En Proceso' %}
-                        {% if user.is_admin or user.id_rol.nombre_rol == 'CAS' %}
+                        {% if user.is_admin or user.es_coordinador %}
                             <a href="{% url 'expediente_update' caso.pk %}" class="btn btn-sm btn-primary"><i
                                 class="bi bi-pencil"></i></a>
                             <a href="{% url 'expediente_cerrar' caso.pk %}" class="btn btn-sm btn-warning"><i

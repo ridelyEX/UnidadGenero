@@ -87,7 +87,7 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="nav flex-column">
-                    {% if user.is_authenticated %}
+                    {% if user.is_admin %}
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'usuarios_list' %}">Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'personas_list' %}">Personas</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'documentos_list' %}">Documentos</a></li>
@@ -97,6 +97,25 @@
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'expediente_list' %}">Expedientes</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'indicadores_list' %}">Indicadores</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'bitacora_list' %}">Bitácora</a></li>
+                    {% elif user.es_coordinador %}
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'personas_list' %}">Personas</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'documentos_list' %}">Documentos</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'actividades_list' %}">Acciones</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'capacitaciones_list' %}">Capacitaciones</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'expediente_list' %}">Expedientes</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'indicadores_list' %}">Indicadores</a></li>
+                    {% elif user.es_vocal or user.es_secretaria %}
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'documentos_list' %}">Documentos</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'actividades_list' %}">Acciones</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'capacitaciones_list' %}">Capacitaciones</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'expediente_list' %}">Expedientes</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'indicadores_list' %}">Indicadores</a></li>
+                    {% elif user.es_pg %}
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'capacitaciones_list' %}">Capacitaciones</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'expediente_list' %}">Expedientes</a></li>
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav">

@@ -79,7 +79,7 @@ class BitacoraListView(VocalOSuperiorMixin, ListView):
 # --- Capacitacion Views ---
 from .models import Capacitacion
 
-class CapacitacionListView(VocalOSuperiorMixin, ListView):
+class CapacitacionListView(LoginRequiredMixin, ListView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_list.html'
     context_object_name = 'capacitaciones'

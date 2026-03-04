@@ -31,12 +31,13 @@ class CasoListView(LoginRequiredMixin, ListView):
             return Caso_atencion.objects.all()
 
         elif user.es_vocal() and user.es_secretaria():
-            return Caso_atencion.objects.filter(persona_consejera=user)
+            # return Caso_atencion.objects.filter(persona_consejera=user) query para listar casos asignados (no se asignan de momento)
+            return Caso_atencion.objects.filter(models.Q(denunciante=user.persona))
 
         else:
             if hasattr(user, 'persona'):
                 return Caso_atencion.objects.filter(
-                    models.Q(denunciante=user.persona) | models.Q(denunciado=user.persona)
+                    models.Q(denunciante=user.persona) #| models.Q(denunciado=user.persona lista los expedientes en los que es señalado. Depreciado
                 )
             else:
                 return Caso_atencion.objects.none()
@@ -65,6 +66,16 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
         form = super().get_form(form_class)
         form.fields['fecha'].widget = forms.DateInput(attrs={'type': 'date'})
 
+        user = self.request.user
+        if not (user.is_admin or user.es_coordinador()):
+            if 'denunciante' in form.fields:
+                form.fields['denunciante'].disabled = True
+                form.fields['denunciante'].initial = self.lock_name()
+                form.fields['denunciante'].widget.attrs.update({
+                    'class': 'form-control',
+                    'readonly': 'readonly',
+                })
+
         if 'persona_consejera' in form.fields:
             from usuarios.models import Usuario
             queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
@@ -80,16 +91,14 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # Generar folio único basado en el tipo de caso
         form.instance.folio = self.folio(form.instance.tipo)
-        # Si el tipo no es ACL, establecer jerarquía de acoso como 'N/A'
-        if form.instance.tipo != 'ACL':
-            form.instance.jerarquia_acoso = 'N/A'
 
         user = self.request.user
-        if not user.is_admin and not (user.id_rol and user.id_rol.nombre_rol in ['CAS', 'PC']):
-            if hasattr(user, 'persona'):
-                form.instance.denunciante = user.persona
+        if not (user.is_admin or user.es_coordinador()):
+            persona_denunciante = self.lock_name()
+            if persona_denunciante:
+                form.instance.denunciante = persona_denunciante
             else:
-                messages.error(self.request, 'El usuario no tiene persona asociada.')
+                messages.error(self.request, 'El usuario no tiene personal asignado')
                 return self.form_invalid(form)
 
         if form.instance.persona_consejera:
@@ -101,6 +110,11 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
 
         messages.success(self.request, 'Expediente registrado exitosamente.')
         return super().form_valid(form)
+    
+    def lock_name(self):
+        if hasattr(self.request.user, 'persona'):
+            return self.request.user.persona
+        return None
 
     ### Método para generar folio único basado en el tipo de caso
     def folio(self, tipo):
