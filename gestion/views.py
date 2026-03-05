@@ -50,6 +50,15 @@ class ActividadUpdateView(PermisoModificarMixin, UpdateView):
     fields = ['tipo_actividad', 'objetivo', 'fecha_inicio','id_usuario_responsable']
     success_url = reverse_lazy('actividades_list')
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        form.fields['fecha_inicio'].label = 'Fecha de inicio'
+        form.fields['fecha_inicio'].widget = forms.DateInput(attrs={'type': 'date'})
+        form.fields['fecha_inicio'].widget.attrs.update({'class': 'form-control'})
+
+        return form
+
     def form_valid(self, form):
         messages.success(self.request, 'Actividad actualizada correctamente.')
         return super().form_valid(form)

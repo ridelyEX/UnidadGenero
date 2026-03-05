@@ -5,9 +5,9 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Acciones</h2>
-    {% if user.tiene_permiso_modificar %}
+
     <a href="{% url 'actividad_create' %}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Nueva Acción</a>
-    {% endif %}
+
 </div>
 
 <div class="table-responsive">
@@ -17,7 +17,6 @@
                 <th>Tipo</th>
                 <th>Objetivo</th>
                 <th>Fecha Inicio</th>
-                <th>Estatus</th>
                 <th>Responsable</th>
                 <th>Modificaciones</th>
             </tr>
@@ -25,12 +24,9 @@
         <tbody>
             {% for actividad in actividades %}
             <tr>
-                <td>{{ actividad.tipo_actividad }}</td>
+                <td>{{ actividad.get_tipo_actividad_display }}</td>
                 <td>{{ actividad.objetivo|truncatechars:50 }}</td>
                 <td>{{ actividad.fecha_inicio }}</td>
-                <td>
-                    <span class="badge bg-info text-dark">{{ actividad.estatus }}</span>
-                </td>
                 <td>{{ actividad.id_usuario_responsable }}</td>
                 <td>
                     <a href="{% url 'actividad_update' actividad.pk %}" class="btn btn-sm btn-primary"><i
