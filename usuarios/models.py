@@ -35,7 +35,7 @@ class Rol(models.Model):
 
         # No tiene acceso a contenido confidencial de expedientes
         'SEC': {
-            'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
+            'ver': ['acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
             'modificar': ['expedientes', 'capacitaciones', 'indicadores']
         },
 

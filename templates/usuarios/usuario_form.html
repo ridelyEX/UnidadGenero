@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %}
 
 {% block title %}{% if object %}Editar{% else %}Nuevo{% endif %} Usuario{% endblock %}
 
@@ -45,5 +45,6 @@
         }
     });
 </script>
+<script src="{% static 'scripts/addNameToUser.js' %}"></script>
 {% endblock %}
 {% endblock %}

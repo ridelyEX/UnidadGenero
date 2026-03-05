@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="vistas ajustadas a los roles. Condiciones de acceso y muestra de datos en vistas y templates ajustados a los nuevos roles. Tarjetas de tipos y jerarquias de acoso añadidos a caso_form.html">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="tipos de violencia ahora en texto bold en el template de caso_form.html">
+      <change afterPath="$PROJECT_DIR$/static/scripts/addNameToUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestion/actividad_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/actividad_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/usuarios/usuario_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usuarios/usuario_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -338,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772657874111</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="tipos de violencia ahora en texto bold en el template de caso_form.html">
+      <option name="closed" value="true" />
+      <created>1772725427966</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1772725427966</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -353,7 +367,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="añadida plantilla 404, campo id_dependencia eliminado" />
     <MESSAGE value="descarga disponible de documentos en Documentos" />
     <MESSAGE value="Logout corregido con método post dentro del template. Logger y messeges añadido a LoginView" />
     <MESSAGE value="id asignado a los roles" />
@@ -378,7 +391,8 @@
     <MESSAGE value="usuarios y personas tienen relación y pueden ser creados con normalidad. Error de lógica en usuarios/views.py que no permitía crear usuarios corregido" />
     <MESSAGE value="Refactorización de los roles y accesos a vistas. Ahora Rol vocal, secretaria y coordinador. Creación de casos/mixins.py para las clases CoordinadorRequiredMixin y VocalOSuperiorMixin. Creación de usuarios/mixins.py para las clases RolRequiredMixin, PermisoVerMixin y permisoModificarMixin" />
     <MESSAGE value="vistas ajustadas a los roles. Condiciones de acceso y muestra de datos en vistas y templates ajustados a los nuevos roles. Tarjetas de tipos y jerarquias de acoso añadidos a caso_form.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="vistas ajustadas a los roles. Condiciones de acceso y muestra de datos en vistas y templates ajustados a los nuevos roles. Tarjetas de tipos y jerarquias de acoso añadidos a caso_form.html" />
+    <MESSAGE value="tipos de violencia ahora en texto bold en el template de caso_form.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="tipos de violencia ahora en texto bold en el template de caso_form.html" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

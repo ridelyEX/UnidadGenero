@@ -1,38 +1,60 @@
+from django import forms
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 
 from casos.mixins import VocalOSuperiorMixin
+from usuarios.mixins import PermisoVerMixin, PermisoModificarMixin, RolRequiredMixin
 from .models import Actividad, Documento, Bitacora
 
 # --- Actividad Views ---
-class ActividadListView(LoginRequiredMixin, ListView):
+class ActividadListView(PermisoVerMixin, ListView):
     model = Actividad
     template_name = 'gestion/actividad_list.html'
     context_object_name = 'actividades'
 
-class ActividadCreateView(VocalOSuperiorMixin, CreateView):
+class ActividadCreateView(PermisoModificarMixin, CreateView):
     model = Actividad
     template_name = 'gestion/actividad_form.html'
-    fields = ['tipo_actividad', 'objetivo', 'fecha_inicio', 'estatus', 'id_usuario_responsable']
+    fields = ['id_caso', 'tipo_actividad', 'objetivo', 'fecha_inicio', 'id_usuario_responsable']
     success_url = reverse_lazy('actividades_list')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Personalizar etiquetas y widgets
+        form.fields['tipo_actividad'].label = 'Tipo de actividad'
+
+        # Personalizar el campo de fecha para usar un selector de fecha
+        form.fields['fecha_inicio'].label = 'Fecha de inicio'
+        form.fields['fecha_inicio'].widget = forms.DateInput(attrs={'type': 'date'})
+        form.fields['fecha_inicio'].widget.attrs.update({'class': 'form-control'})
+
+        # Personalizar el campo de caso para mostrar el folio en lugar del ID
+        form.fields['id_caso'].label = 'Folio del caso'
+        form.fields['id_caso'].empty_label = 'Seleccionar folio del caso'
+        form.fields['id_caso'].label_from_instance = lambda obj: f"{obj.folio}"
+
+        # Personalizar el campo de usuario responsable para mostrar el nombre completo
+        form.fields['id_usuario_responsable'].label = 'Usuario responsable'
+
+        return form
 
     def form_valid(self, form):
         messages.success(self.request, 'Actividad creada correctamente.')
         return super().form_valid(form)
 
-class ActividadUpdateView(VocalOSuperiorMixin, UpdateView):
+class ActividadUpdateView(PermisoModificarMixin, UpdateView):
     model = Actividad
     template_name = 'gestion/actividad_form.html'
-    fields = ['tipo_actividad', 'objetivo', 'fecha_inicio', 'estatus', 'id_usuario_responsable']
+    fields = ['tipo_actividad', 'objetivo', 'fecha_inicio','id_usuario_responsable']
     success_url = reverse_lazy('actividades_list')
 
     def form_valid(self, form):
         messages.success(self.request, 'Actividad actualizada correctamente.')
         return super().form_valid(form)
 
-class ActividadDeleteView(VocalOSuperiorMixin, DeleteView):
+class ActividadDeleteView(RolRequiredMixin, DeleteView):
     model = Actividad
     template_name = 'gestion/actividad_confirm_delete.html'
     success_url = reverse_lazy('actividades_list')
@@ -70,7 +92,7 @@ class DocumentoDeleteView(LoginRequiredMixin, DeleteView):
 
 
 # --- Bitacora Views ---
-class BitacoraListView(VocalOSuperiorMixin, ListView):
+class BitacoraListView(PermisoVerMixin, ListView):
     model = Bitacora
     template_name = 'gestion/bitacora_list.html'
     context_object_name = 'registros'
@@ -79,12 +101,12 @@ class BitacoraListView(VocalOSuperiorMixin, ListView):
 # --- Capacitacion Views ---
 from .models import Capacitacion
 
-class CapacitacionListView(LoginRequiredMixin, ListView):
+class CapacitacionListView(PermisoVerMixin, ListView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_list.html'
     context_object_name = 'capacitaciones'
 
-class CapacitacionCreateView(VocalOSuperiorMixin, CreateView):
+class CapacitacionCreateView(PermisoModificarMixin, CreateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
     fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
@@ -94,7 +116,7 @@ class CapacitacionCreateView(VocalOSuperiorMixin, CreateView):
         messages.success(self.request, 'Capacitación registrada correctamente.')
         return super().form_valid(form)
 
-class CapacitacionUpdateView(VocalOSuperiorMixin, UpdateView):
+class CapacitacionUpdateView(PermisoModificarMixin, UpdateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
     fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
@@ -104,7 +126,7 @@ class CapacitacionUpdateView(VocalOSuperiorMixin, UpdateView):
         messages.success(self.request, 'Capacitación actualizada correctamente.')
         return super().form_valid(form)
 
-class CapacitacionDeleteView(VocalOSuperiorMixin, DeleteView):
+class CapacitacionDeleteView(RolRequiredMixin, DeleteView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_confirm_delete.html'
     success_url = reverse_lazy('capacitaciones_list')

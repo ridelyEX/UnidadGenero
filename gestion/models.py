@@ -6,11 +6,24 @@ from organizaciones.models import Persona
 
 
 class Actividad(models.Model):
+
+    actividades_choices = {
+        ('RDQ', 'Recepción de queja'),
+        ('ENT', 'Entrevista'),
+        ('MDP', 'Medidas de protección'),
+        ('NOT', 'Notificación'),
+        ('IDE', 'Integración de expediente'),
+        ('CAN', 'Canalización'),
+        ('RES', 'Resolución'),
+        ('SEG', 'Seguimiento'),
+        ('CDC', 'Cierre de caso'),
+    }
+
     id_actividad = models.AutoField(primary_key=True)
-    tipo_actividad = models.CharField(max_length=100)
+    tipo_actividad = models.CharField(max_length=100, choices=actividades_choices)
+    id_caso = models.ForeignKey(Caso_atencion, on_delete=models.CASCADE, blank=True, null=True)
     objetivo = models.TextField()
     fecha_inicio = models.DateField()
-    estatus = models.CharField(max_length=50)
     id_usuario_responsable = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='actividades_responsable')
 
     def __str__(self):

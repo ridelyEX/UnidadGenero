@@ -27,13 +27,23 @@ class UsuarioCreateView(RolRequiredMixin, CreateView):
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        form.fields['id_rol'].label_from_instance = lambda obj: f"{obj.descripcion}"
-        form.fields['persona'].empty_label = 'Servidor público'
-        form.fields['persona'].widget.attrs.update({'class': 'form-control'})
 
+        form.fields['persona'].label = 'Servidor público'
+        form.fields['persona'].widget.attrs.update({'class': 'form-control', 'id': 'id_persona'})
         form.fields['persona'].queryset = Persona.objects.filter(usuario__isnull=True)
         form.fields['persona'].label_from_instance = lambda obj: f"{obj.nombre}"
         form.fields['persona'].required = True
+
+        form.fields['nombre'].widget.attrs.update({
+            'class': 'form-control',
+            'id': 'id_nombre'
+        })
+
+        form.fields['password'].label = 'Contraseña'
+        form.fields['password'].widget = forms.PasswordInput(attrs={'class': 'form-control'})
+
+        form.fields['id_rol'].label = 'Rol'
+        form.fields['id_rol'].label_from_instance = lambda obj: f"{obj.descripcion}"
 
         return form
 
