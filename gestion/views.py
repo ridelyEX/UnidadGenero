@@ -118,8 +118,29 @@ class CapacitacionListView(PermisoVerMixin, ListView):
 class CapacitacionCreateView(PermisoModificarMixin, CreateView):
     model = Capacitacion
     template_name = 'gestion/capacitacion_form.html'
-    fields = ['nombre', 'fecha', 'modalidad', 'certificacion']
+    fields = ['nombre', 'responsable', 'fecha_inicio', 'fecha_fin', 'tipo_actividad', 'tema', 'objetivo', 'materiales', 'participantes']
     success_url = reverse_lazy('capacitaciones_list')
+
+    def get_form(self, form_class = None):
+        form = super().get_form(form_class)
+
+        form.fields['nombre'].label = 'Nombre de la capacitación'
+
+        form.fields['responsable'].label = 'Responsable de la capacitación'
+
+        form.fields['fecha_inicio'].label = 'Fecha de inicio'
+        form.fields['fecha_inicio'].widget = forms.DateInput(attrs={'type': 'date'})
+        form.fields['fecha_inicio'].widget.attrs.update({'class': 'form-control'})
+
+        form.fields['fecha_fin'].label = 'Fecha de conclusión'
+        form.fields['fecha_fin'].widget = forms.DateTimeInput(attrs={'type': 'date'})
+        form.fields['fecha_fin'].widget.attrs.update({'class': 'form-control'})
+
+        form.fields['tipo_actividad'].label = 'Tipo de capacitación'
+
+        form.fields['tema'].label = 'Tema de la capacitación'
+
+        return form
 
     def form_valid(self, form):
         messages.success(self.request, 'Capacitación registrada correctamente.')

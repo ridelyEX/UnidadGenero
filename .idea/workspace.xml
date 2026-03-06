@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="labels modificados para usuarios y actividades para que sean más entendibles. roles de usuarios actualizados en base de datos. autorrellenado para el nombre de usuario en el form de usuarios">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="actividad_list.html muestra la descripción del tipo de actividad del modelo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gestion/actividad_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/actividad_list.html" afterDir="false" />
     </list>
@@ -355,7 +356,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772739968435</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="actividad_list.html muestra la descripción del tipo de actividad del modelo">
+      <option name="closed" value="true" />
+      <created>1772742323767</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1772742323767</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,7 +379,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Logout corregido con método post dentro del template. Logger y messeges añadido a LoginView" />
     <MESSAGE value="id asignado a los roles" />
     <MESSAGE value="campos de curp, puesto y departamento añadidos al modelo Persona" />
     <MESSAGE value="departamentos y puestos actualizados dentro de los modelos" />
@@ -395,7 +403,8 @@
     <MESSAGE value="vistas ajustadas a los roles. Condiciones de acceso y muestra de datos en vistas y templates ajustados a los nuevos roles. Tarjetas de tipos y jerarquias de acoso añadidos a caso_form.html" />
     <MESSAGE value="tipos de violencia ahora en texto bold en el template de caso_form.html" />
     <MESSAGE value="labels modificados para usuarios y actividades para que sean más entendibles. roles de usuarios actualizados en base de datos. autorrellenado para el nombre de usuario en el form de usuarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="labels modificados para usuarios y actividades para que sean más entendibles. roles de usuarios actualizados en base de datos. autorrellenado para el nombre de usuario en el form de usuarios" />
+    <MESSAGE value="actividad_list.html muestra la descripción del tipo de actividad del modelo" />
+    <option name="LAST_COMMIT_MESSAGE" value="actividad_list.html muestra la descripción del tipo de actividad del modelo" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

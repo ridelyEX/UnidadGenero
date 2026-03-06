@@ -85,13 +85,51 @@ class Documento(models.Model):
         return self.nombre_archivo
 
 class Capacitacion(models.Model):
+    tipos_actividad_choices = [
+        ('taller', 'Talleres'),
+        ('curso', 'Cursos'),
+        ('platica_informativa', 'Pláticas informativas'),
+        ('conferencia', 'Conferencias'),
+        ('foro', 'Foros'),
+        ('actividad_sensibilizacion', 'Actividades de sensibilización'),
+    ]
+
+    temas_choices = [
+        ('IDG', 'Igualdad de género'),
+        ('ND', 'No discriminación'),
+        ('PVL', 'Prevención de violencia laboral'),
+        ('PAL', 'Prevención del acoso laboral'),
+        ('PHS', 'Prevención del hostigamiento sexual'),
+        ('PAS', 'Prevención del acoso sexual'),
+        ('DL', 'Derechos laborales'),
+        ('COR', 'Cultura organizacional respetuosa'),
+    ]
+
     id_capacitacion = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=200)
-    fecha = models.DateField()
-    modalidad = models.CharField(max_length=50) # Presencial, Virtual, Hibrida
-    certificacion = models.BooleanField(default=False)
 
-    participantes = models.ManyToManyField(Persona, related_name='capacitaciones')
+    tipo_actividad = models.CharField(max_length=100, null=True, blank=True, choices=tipos_actividad_choices)
+    tema = models.CharField(max_length=50, null=True, blank=True, choices=temas_choices)
+    objetivo = models.CharField(max_length=200, null=True, blank=True)
+    responsable = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    fecha_inicio = models.DateTimeField(null=True, blank=True)
+    fecha_fin = models.DateField(null=True, blank=True)
+    materiales = models.CharField(max_length=200, null=True, blank=True)
+    observaciones = models.CharField(max_length=200, null=True, blank=True)
+
+    participantes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='capacitaciones')
 
     def __str__(self):
         return self.nombre
+
+class SeguimientoCapacitacion(models.Model):
+    estado_choices = [
+        ('abierto', 'Abierto'),
+        ('pendiente', 'Pendiente'),
+        ('cerrado', 'Cerrado'),
+    ]
+
+    id_capacitación = models.ForeignKey(Capacitacion, on_delete=models.CASCADE)
+    responsable = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    estado = models.CharField(max_length=50, null=True, blank=True, choices=estado_choices)
+
