@@ -15,24 +15,19 @@
             <tr>
                 <th>Nombre</th>
                 <th>Fecha</th>
-                <th>Modalidad</th>
-                <th>Certificación</th>
-                <th>Acciones</th>
+                <th>Tema</th>
+                <th>Actividades</th>
+                <th>Encargado</th>
             </tr>
         </thead>
         <tbody>
             {% for cap in capacitaciones %}
             <tr>
                 <td>{{ cap.nombre }}</td>
-                <td>{{ cap.fecha }}</td>
-                <td>{{ cap.modalidad }}</td>
-                <td>
-                    {% if cap.certificacion %}
-                    <i class="bi bi-check-circle-fill text-success"></i> Sí
-                    {% else %}
-                    <i class="bi bi-x-circle text-secondary"></i> No
-                    {% endif %}
-                </td>
+                <td>{{ cap.fecha_inicio }}</td>
+                <td>{{ cap.get_tema_display }}</td>
+                <td>{{ cap.get_tipo_actividad_display }}</td>
+                <td>{{ cap.responsable }}</td>
                 <td>
                     <a href="{% url 'capacitacion_update' cap.pk %}" class="btn btn-sm btn-primary"><i
                             class="bi bi-pencil"></i></a>

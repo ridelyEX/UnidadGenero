@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="actividad_list.html muestra la descripción del tipo de actividad del modelo">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="campos del modelo Capacitacion actualizados para mayor precisión. CapacitacionCreateView actualizado para mayor precisión con el modelo y la información capturada.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gestion/actividad_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/actividad_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestion/capacitacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion/capacitacion_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772742323767</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="campos del modelo Capacitacion actualizados para mayor precisión. CapacitacionCreateView actualizado para mayor precisión con el modelo y la información capturada.">
+      <option name="closed" value="true" />
+      <created>1772826294546</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1772826294546</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="id asignado a los roles" />
     <MESSAGE value="campos de curp, puesto y departamento añadidos al modelo Persona" />
     <MESSAGE value="departamentos y puestos actualizados dentro de los modelos" />
     <MESSAGE value="departamentos y puestos implementados en las vistas y el template de personas" />
@@ -404,7 +411,8 @@
     <MESSAGE value="tipos de violencia ahora en texto bold en el template de caso_form.html" />
     <MESSAGE value="labels modificados para usuarios y actividades para que sean más entendibles. roles de usuarios actualizados en base de datos. autorrellenado para el nombre de usuario en el form de usuarios" />
     <MESSAGE value="actividad_list.html muestra la descripción del tipo de actividad del modelo" />
-    <option name="LAST_COMMIT_MESSAGE" value="actividad_list.html muestra la descripción del tipo de actividad del modelo" />
+    <MESSAGE value="campos del modelo Capacitacion actualizados para mayor precisión. CapacitacionCreateView actualizado para mayor precisión con el modelo y la información capturada." />
+    <option name="LAST_COMMIT_MESSAGE" value="campos del modelo Capacitacion actualizados para mayor precisión. CapacitacionCreateView actualizado para mayor precisión con el modelo y la información capturada." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

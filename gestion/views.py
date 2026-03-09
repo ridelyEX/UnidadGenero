@@ -73,12 +73,12 @@ class ActividadDeleteView(RolRequiredMixin, DeleteView):
         return super().delete(request, *args, **kwargs)
 
 # --- Documento Views ---
-class DocumentoListView(LoginRequiredMixin, ListView):
+class DocumentoListView(PermisoVerMixin, ListView):
     model = Documento
     template_name = 'gestion/documento_list.html'
     context_object_name = 'documentos'
 
-class DocumentoCreateView(LoginRequiredMixin, CreateView):
+class DocumentoCreateView(PermisoModificarMixin, CreateView):
     model = Documento
     template_name = 'gestion/documento_form.html'
     fields = ['nombre_archivo', 'tipo_documento', 'ruta_archivo', 'version', 'estado', 'id_actividad']
@@ -89,7 +89,7 @@ class DocumentoCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Documento subido correctamente.')
         return super().form_valid(form)
 
-class DocumentoDeleteView(LoginRequiredMixin, DeleteView):
+class DocumentoDeleteView(RolRequiredMixin, DeleteView):
     model = Documento
     template_name = 'gestion/documento_confirm_delete.html'
     success_url = reverse_lazy('documentos_list')

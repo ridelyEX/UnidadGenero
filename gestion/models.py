@@ -112,7 +112,7 @@ class Capacitacion(models.Model):
     tema = models.CharField(max_length=50, null=True, blank=True, choices=temas_choices)
     objetivo = models.CharField(max_length=200, null=True, blank=True)
     responsable = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-    fecha_inicio = models.DateTimeField(null=True, blank=True)
+    fecha_inicio = models.DateField(null=True, blank=True)
     fecha_fin = models.DateField(null=True, blank=True)
     materiales = models.CharField(max_length=200, null=True, blank=True)
     observaciones = models.CharField(max_length=200, null=True, blank=True)
