@@ -29,7 +29,7 @@ class Rol(models.Model):
 
         # Solo puede hacer consultas y modificaciones de expedientes asignados
         'VOC': {
-            'ver': ['acciones', 'expedientes', 'bitacoras', 'capacitacione', 'indicadores'],
+            'ver': ['acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
             'modificar': ['acciones', 'expedientes', 'indicadores']
         },
 

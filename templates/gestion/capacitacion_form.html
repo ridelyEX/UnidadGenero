@@ -7,7 +7,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h4>{% if object %}Editar{% else %}Nueva{% endif %} Capacitación</h4>
+                <h4>{% if object %}Editar{% else %}Nueva{% endif %} Capacitación{% if object %}: {{ object.nombre }} {% else %} {% endif %}</h4>
             </div>
             <div class="card-body">
                 <form method="post">
