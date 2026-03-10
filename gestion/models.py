@@ -62,8 +62,6 @@ class Documento(models.Model):
     tipo_documento = models.CharField(max_length=100, choices=tipo_documentos)
     ruta_archivo = models.FileField(upload_to='documentos/')
     fecha_carga = models.DateTimeField(auto_now_add=True)
-    version = models.PositiveIntegerField(default=1)
-    estado = models.CharField(max_length=50)
 
     # Datos relacionados la documento
     id_usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)

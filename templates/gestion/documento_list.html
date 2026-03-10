@@ -14,9 +14,8 @@
             <tr>
                 <th>Nombre</th>
                 <th>Tipo</th>
-                <th>Versión</th>
-                <th>Estado</th>
                 <th>Actividad</th>
+                <th>Confidencialidad</th>
                 <th>Usuario</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
@@ -27,9 +26,8 @@
             <tr>
                 <td><a href="{{ documento.ruta_archivo.url }}" target="_blank" download="{{ documento.ruta_archivo.url }}">{{ documento.nombre_archivo }}</a></td>
                 <td>{{ documento.tipo_documento }}</td>
-                <td>{{ documento.version }}</td>
-                <td>{{ documento.estado }}</td>
                 <td>{{ documento.id_actividad|default:"-" }}</td>
+                <td>{{ documento.nivel_confidencialidad }}</td>
                 <td>{{ documento.id_usuario }}</td>
                 <td>{{ documento.fecha_carga|date:"d/m/Y H:i" }}</td>
                 <td>

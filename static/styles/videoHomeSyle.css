@@ -1,0 +1,47 @@
+.video {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+#myVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video .p-5 {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.video .container-fluid {
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Asegurar que navbar y footer estén por encima del video */
+nav.navbar {
+    position: relative;
+    z-index: 1000;
+}
+
+footer {
+    position: relative;
+    z-index: 1000;
+}
+
+.offcanvas {
+    z-index: 1050;
+}

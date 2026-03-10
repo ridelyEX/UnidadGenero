@@ -29,14 +29,14 @@ class Rol(models.Model):
 
         # Solo puede hacer consultas y modificaciones de expedientes asignados
         'VOC': {
-            'ver': ['actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
-            'modificar': ['actividades', 'expedientes', 'indicadores']
+            'ver': ['actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores', 'documentos'],
+            'modificar': ['actividades', 'expedientes', 'indicadores', 'documentos']
         },
 
         # No tiene acceso a contenido confidencial de expedientes
         'SEC': {
-            'ver': ['actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
-            'modificar': ['expedientes', 'capacitaciones', 'indicadores']
+            'ver': ['actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores', 'documentos'],
+            'modificar': ['expedientes', 'capacitaciones', 'indicadores', 'documentos']
         },
 
         # Solo puede consultar y crear su propio expediente. Verificar si puede consultar actividades

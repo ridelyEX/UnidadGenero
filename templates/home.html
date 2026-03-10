@@ -1,9 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 
 {% block title %}Inicio - Unidad de Género{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/videoHomeSyle.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="video">
 <div class="p-5 mb-4 bg-light rounded-3">
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static 'videos/video.mp4' %}" type="video/mp4">
+        </video>
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Bienvenido, {{ user.nombre }}</h1>
         <p class="col-md-8 fs-4">Sistema de Gestión de la Unidad de Género.</p>
@@ -84,7 +92,7 @@
                             Consultar indicadores
                         </h5>
                         <p class="card-text">Ver los indicadores del sistema</p>
-                        <a href="{% url 'expediente_list' %}" class="btn btn-primary">Ir a indicadores</a>
+                        <a href="{% url 'indicadores_list' %}" class="btn btn-primary">Ir a indicadores</a>
                     </div>
                 </div>
             </div>
@@ -122,5 +130,6 @@
             <!-- More dashboard cards can be added here -->
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

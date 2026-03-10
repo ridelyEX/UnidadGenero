@@ -89,9 +89,21 @@ class DocumentoListView(PermisoVerMixin, ListView):
 class DocumentoCreateView(PermisoModificarMixin, CreateView):
     model = Documento
     template_name = 'gestion/documento_form.html'
-    fields = ['nombre_archivo', 'tipo_documento', 'ruta_archivo', 'version', 'estado', 'id_actividad']
+    fields = ['nombre_archivo', 'tipo_documento', 'ruta_archivo', 'nivel_confidencialidad','id_actividad']
     success_url = reverse_lazy('documentos_list')
     seccion = 'documentos'
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        form.fields['nombre_archivo'].label = 'Nombre del archivo'
+        form.fields['tipo_documento'].label = 'Tipo de documento'
+        form.fields['ruta_archivo'].label = 'Ruta del archivo'
+        form.fields['nivel_confidencialidad'].label = 'Nivel de confidencialidad'
+
+        form.fields['id_actividad'].label = 'Actividad'
+
+        return form
 
     def form_valid(self, form):
         form.instance.id_usuario = self.request.user
@@ -107,8 +119,6 @@ class DocumentoDeleteView(RolRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Documento eliminado correctamente.')
         return super().delete(request, *args, **kwargs)
-
-
 
 # --- Bitacora Views ---
 class BitacoraListView(PermisoVerMixin, ListView):
