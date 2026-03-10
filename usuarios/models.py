@@ -17,31 +17,31 @@ class Rol(models.Model):
     PERMISOS_ROL =  {
         # Tiene acceso total al sistema
         'ADMIN': {
-            'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores', 'usuarios'],
-            'modificar': ['personas', 'acciones', 'expedientes', 'capacitaciones', 'indicadores', 'usuarios']
+            'ver': ['personas', 'actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores', 'usuarios', 'documentos'],
+            'modificar': ['personas', 'actividades', 'expedientes', 'capacitaciones', 'indicadores', 'usuarios']
         },
 
         # Puede hacer consultas y modificaciones en general
         'COORD': {
-            'ver': ['personas', 'acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
-            'modificar': ['expedientes', 'capacitaciones', 'indicadores']
+            'ver': ['personas', 'actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores', 'documentos'],
+            'modificar': ['expedientes', 'capacitaciones', 'indicadores', 'documentos', 'actividades']
         },
 
         # Solo puede hacer consultas y modificaciones de expedientes asignados
         'VOC': {
-            'ver': ['acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
-            'modificar': ['acciones', 'expedientes', 'indicadores']
+            'ver': ['actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
+            'modificar': ['actividades', 'expedientes', 'indicadores']
         },
 
         # No tiene acceso a contenido confidencial de expedientes
         'SEC': {
-            'ver': ['acciones', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
+            'ver': ['actividades', 'expedientes', 'bitacoras', 'capacitaciones', 'indicadores'],
             'modificar': ['expedientes', 'capacitaciones', 'indicadores']
         },
 
-        # Solo puede consultar y crear su propio expediente. Verificar si puede consultar acciones
+        # Solo puede consultar y crear su propio expediente. Verificar si puede consultar actividades
         'PG': {
-            'ver': ['capacitaciones', 'expedientes'], #acciones
+            'ver': ['capacitaciones', 'expedientes'], #actividades
             'modificar': ['expedientes']
         }
     }

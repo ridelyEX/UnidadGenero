@@ -105,6 +105,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'expediente_list' %}">Expedientes</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'indicadores_list' %}">Indicadores</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'bitacora_list' %}">Bitácora</a></li>
                     {% elif user.es_vocal or user.es_secretaria %}
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'documentos_list' %}">Documentos</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{% url 'actividades_list' %}">Acciones</a></li>

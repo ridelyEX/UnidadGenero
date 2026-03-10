@@ -20,18 +20,101 @@
                     </div>
                 </div>
             </div>
-            {% else %}
+            {% elif user.es_coordinador %}
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <a href="" class="btn btn-primary">Crear nuevo expediente</a>
+                        <h5 class="card-title">
+                            Administrar personal
+                        </h5>
+                        <p class="card-text">Agregar, modificar o eliminar personal de la dependencia</p>
+                        <a href="{% url 'personas_list' %}" class="btn btn-primary">Ir a personal</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <a href="" class="btn btn-primary">Consultar capacitaciones</a>
+                        <h5 class="card-title">
+                            Consultar indicadores
+                        </h5>
+                        <p class="card-text">Ver los indicadores del sistema</p>
+                        <a href="{% url 'indicadores_list' %}" class="btn btn-primary">Ir a indicadores</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Ver bitácora
+                        </h5>
+                        <p class="card-text">Dar seguimiento a las acciones realizadas en el sistema</p>
+                        <a href="{% url 'bitacora_list' %}" class="btn btn-primary">Ir a bitácora</a>
+                    </div>
+                </div>
+            </div>
+            {% elif user.es_vocal or user.es_secretaria %}
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Consultar acciones
+                        </h5>
+                        <p class="card-text">Modificar y dar seguimiento a las acciones a realizar</p>
+                        <a href="{% url 'actividades_list' %}" class="btn btn-primary">Ir a acciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Consultar capacitaciones
+                        </h5>
+                        <p class="card-text">Crear, modificar o eliminar capacitaciones para el personal</p>
+                        <a href="{% url 'capacitaciones_list' %}" class="btn btn-primary">Ir a capacitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Consultar indicadores
+                        </h5>
+                        <p class="card-text">Ver los indicadores del sistema</p>
+                        <a href="{% url 'expediente_list' %}" class="btn btn-primary">Ir a indicadores</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Ver bitácora
+                        </h5>
+                        <p class="card-text">Dar seguimiento a las acciones realizadas en el sistema</p>
+                        <a href="{% url 'bitacora_list' %}" class="btn btn-primary">Ir a bitácoras</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Crear nuevo expediente</h5>
+                        <p class="card-text">Crear un expediente de denuncia anónima</p>
+                        <a href="{% url 'expediente_list' %}" class="btn btn-primary">Ir a expedientes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Consultar capacitaciones</h5>
+                        <p class="card-text">Consultar capacitaciones asignadas</p>
+                        <a href="{% url 'capacitaciones_list' %}" class="btn btn-primary">Ir a capacitaciones</a>
                     </div>
                 </div>
             </div>
