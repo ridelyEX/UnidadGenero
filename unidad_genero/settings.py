@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-from django.conf.global_settings import MEDIA_ROOT, STATICFILES_DIRS
+from django.conf.global_settings import MEDIA_ROOT, STATICFILES_DIRS, EMAIL_HOST, EMAIL_USE_TLS, DEFAULT_FROM_EMAIL
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'gestion',
     'casos',
     'indicadores',
+    'django_q',
 ]
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
@@ -175,3 +176,23 @@ MEDIA_URL = '/documentos/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configurar EMAIL
+EMAIL_BACKEND = 'django.core.mail.backedns.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'vinculaciondopm@mpiochhi.gob.mx'
+EMAIL_HOST_PASSWORD = 'vrogjpypvuucnabn'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# COnfiguración de Django-Q
+Q_CLUSTER = {
+    'name': 'DjangoQ',
+    'workers': 4,
+    'timeout': 90,
+    'retry': 120,
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default',
+}

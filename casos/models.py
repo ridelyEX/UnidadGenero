@@ -31,7 +31,7 @@ class Caso_atencion(models.Model):
 
     # Personas involucradas en el caso
     denunciante = models.ForeignKey('organizaciones.Persona', on_delete=SET_NULL, null=True, related_name='casos_denunciante')
-    denunciado = models.ForeignKey('organizaciones.Persona', on_delete=models.SET_NULL, null=True, related_name='casos_denunciado')
+    denunciado = models.ForeignKey('organizaciones.Persona', on_delete=models.SET_NULL, null=True, related_name='casos_denunciado', default='Prefiero no contestar')
 
     # Personal asignado al caso
     persona_consejera = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='casos_asignados')
@@ -46,6 +46,8 @@ class Caso_atencion(models.Model):
     # Tipo de violencia denunciada
     tipo = models.CharField(max_length=100, choices=tipos_violencia)
     jerarquia_acoso = models.CharField(max_length=5, choices=jerarquias_acoso, blank=True, default='N/A', verbose_name="Jerarquía de Acoso")
+    # Campo de descripción de hechos
+    desc_hechos = models.TextField(max_length=100, blank=True, null=True)
     # Descripción de las medidas de protección tomadas
     medidas_proteccion = models.TextField(blank=True, null=True)
 

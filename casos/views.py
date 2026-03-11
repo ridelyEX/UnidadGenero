@@ -50,7 +50,7 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('expediente_list')
 
     def get_form_class(self):
-        base_fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciado']
+        base_fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciado', 'desc_hechos']
 
         if self.request.user.is_admin or self.request.user.es_coordinador():
             self.fields = base_fields + ['denunciante', 'medidas_proteccion', 'persona_consejera']
@@ -65,6 +65,8 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
     def get_form(self,form_class=None):
         form = super().get_form(form_class)
         form.fields['fecha'].widget = forms.DateInput(attrs={'type': 'date'})
+
+        form.fields['denunciado'].empty_label = "Prefiero no contestar"
 
         user = self.request.user
         if not (user.is_admin or user.es_coordinador()):
