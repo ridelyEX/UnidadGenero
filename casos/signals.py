@@ -9,7 +9,7 @@ from casos.models import Caso_atencion
 def notificar_nuevo_expediente(sender, instance, created, **kwargs):
     if created:
         async_task(
-            'casos.task.enviar_notificacion_expediente',
-            instance.id,
-            hook='casos.task.log_envio_exitoso'
+            'casos.tasks.enviar_notificacion_expediente',
+            instance.id_caso,
+            hook='casos.tasks.log_envio_exitoso'
         )

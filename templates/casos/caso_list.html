@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     {% if caso.estatus == 'Abierto' or caso.estatus == 'En Proceso' %}
-                        {% if user.is_admin or user.es_coordinador %}
+                        {% if user.is_admin or user.es_coordinador or user.es_vocal %}
                             <a href="{% url 'expediente_update' caso.pk %}" class="btn btn-sm btn-primary"><i
                                 class="bi bi-pencil"></i></a>
                             <a href="{% url 'expediente_cerrar' caso.pk %}" class="btn btn-sm btn-warning"><i

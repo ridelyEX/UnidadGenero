@@ -30,9 +30,14 @@ class CasoListView(LoginRequiredMixin, ListView):
         if user.is_admin or user.es_coordinador():
             return Caso_atencion.objects.all()
 
-        elif user.es_vocal() and user.es_secretaria():
+        elif user.es_vocal() or user.es_secretaria():
             # return Caso_atencion.objects.filter(persona_consejera=user) query para listar casos asignados (no se asignan de momento)
-            return Caso_atencion.objects.filter(models.Q(denunciante=user.persona))
+            if hasattr(user, 'persona'):
+                return Caso_atencion.objects.filter(
+                    Q(persona_consejera=user) | Q(denunciante=user.persona)
+                )
+            else:
+                return Caso_atencion.objects.filter(persona_consejera=user)
 
         else:
             if hasattr(user, 'persona'):
