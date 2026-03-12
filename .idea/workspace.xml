@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="expedientes asignados se muestran al vocal así como sus propios expedientes de denuncia">
-      <change afterPath="$PROJECT_DIR$/casos/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="requeriminetos de librerias del sistema">
+      <change afterPath="$PROJECT_DIR$/.flake8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +42,11 @@
         <option name="title" value="Current Branch" />
       </GitPushTagMode>
     </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="flake8" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -72,19 +75,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Usuario/Documents/UnidadDeGenero/casos&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "flake8",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Usuario/Documents/UnidadDeGenero/casos",
+    "settings.editor.selected.configurable": "settings.sync"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Usuario\Documents\UnidadDeGenero\casos" />
@@ -423,7 +426,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773262478904</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="refactorizacion de los forms de casos/views.py con casos/forms.py">
+      <option name="closed" value="true" />
+      <created>1773343725041</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1773343725043</updated>
+    </task>
+    <task id="LOCAL-00041" summary="requeriminetos de librerias del sistema">
+      <option name="closed" value="true" />
+      <created>1773343768726</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1773343768726</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -438,8 +457,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Modificado el campo fecha de text a date en Casos." />
-    <MESSAGE value="Añadidos los tipos de violencia y jerarquías (si es que aplica).&#10;Aparece la jerarquia si es que se trata de acoso laboral en la lista de Casos.&#10;Modificado el campo fecha de text a date en Casos." />
     <MESSAGE value="Los roles son visibles con la descripción asignada." />
     <MESSAGE value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos" />
@@ -463,7 +480,9 @@
     <MESSAGE value="homepage actualizada. Aplicación gestion actualizada para cada tipo de usuario" />
     <MESSAGE value="notificaciones por correo agregadas con tasks.py, signals.py" />
     <MESSAGE value="expedientes asignados se muestran al vocal así como sus propios expedientes de denuncia" />
-    <option name="LAST_COMMIT_MESSAGE" value="expedientes asignados se muestran al vocal así como sus propios expedientes de denuncia" />
+    <MESSAGE value="refactorizacion de los forms de casos/views.py con casos/forms.py" />
+    <MESSAGE value="requeriminetos de librerias del sistema" />
+    <option name="LAST_COMMIT_MESSAGE" value="requeriminetos de librerias del sistema" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

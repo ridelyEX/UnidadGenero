@@ -1,0 +1,31 @@
+[flake8]
+# Longitud máxima de línea (Django recomienda 119)
+max-line-length = 119
+
+# Directorios a excluir del análisis
+exclude =
+    .git,
+    __pycache__,
+    */migrations/*,
+    venv,
+    env,
+    .venv,
+    build,
+    dist,
+    *.egg-info
+
+# Errores/warnings a ignorar
+ignore =
+    # E203: whitespace before ':'
+    E203,
+    # W503: line break before binary operator
+    W503,
+    # E501: line too long
+    # E501,
+
+# Complejidad ciclomática máxima
+max-complexity = 10
+
+# Mostrar estadísticas
+statistics = True
+count = True

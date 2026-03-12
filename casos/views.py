@@ -43,7 +43,7 @@ class CasoListView(LoginRequiredMixin, ListView):
         else:
             if hasattr(user, 'persona'):
                 return Caso_atencion.objects.filter(
-                    models.Q(denunciante=user.persona) #| models.Q(denunciado=user.persona lista los expedientes en los que es señalado. Depreciado
+                    models.Q(denunciante=user.persona) #| models.Q(denunciado=user.persona lista los expedientes en los que es señalado. En desuso
                 )
             else:
                 return Caso_atencion.objects.none()
@@ -52,7 +52,7 @@ class CasoListView(LoginRequiredMixin, ListView):
 class CasoCreateView(LoginRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    #fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
+    # fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     def get_form_class(self):
