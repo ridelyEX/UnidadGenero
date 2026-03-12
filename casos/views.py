@@ -8,7 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-from .mixins import CoordinadorRequiredMixin
+from .forms import CasoCreateFormAdmin, CasoCreateFormVocal, CasoCreateFormGeneral
+from .mixins import CoordinadorRequiredMixin, VocalOSuperiorMixin
 from .models import Caso_atencion
 from django.db.models import Q
 
@@ -55,44 +56,19 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('expediente_list')
 
     def get_form_class(self):
-        base_fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciado', 'desc_hechos']
-
-        if self.request.user.is_admin or self.request.user.es_coordinador():
-            self.fields = base_fields + ['denunciante', 'medidas_proteccion', 'persona_consejera']
-        elif self.request.user.es_vocal() and self.request.user.es_secretaria():
-            self.fields = base_fields + ['denunciante']
+        user = self.request.user
+        if user.is_admin or user.es_coordinador():
+            return CasoCreateFormAdmin
+        elif user.es_vocal() or user.es_secretaria():
+            return CasoCreateFormVocal
         else:
-            self.fields = base_fields + ['denunciante']
-
-        return super().get_form_class()
+            return CasoCreateFormGeneral
 
     ### Sobrescribir el método get_form para usar un widget de fecha
-    def get_form(self,form_class=None):
-        form = super().get_form(form_class)
-        form.fields['fecha'].widget = forms.DateInput(attrs={'type': 'date'})
-
-        form.fields['denunciado'].empty_label = "Prefiero no contestar"
-
-        user = self.request.user
-        if not (user.is_admin or user.es_coordinador()):
-            if 'denunciante' in form.fields:
-                form.fields['denunciante'].disabled = True
-                form.fields['denunciante'].initial = self.lock_name()
-                form.fields['denunciante'].widget.attrs.update({
-                    'class': 'form-control',
-                    'readonly': 'readonly',
-                })
-
-        if 'persona_consejera' in form.fields:
-            from usuarios.models import Usuario
-            queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
-            logger.info(f"Usuarios que son personas consejeras: {queryset.count()}")
-            form.fields['persona_consejera'].queryset = queryset
-
-            form.fields['persona_consejera'].empty_label = "Asignar consejero(a)"
-            form.fields['persona_consejera'].widget.attrs.update({'class': 'form-control'})
-
-        return form
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     ### Sobrescribir el método form_valid para generar folio único y manejar jerarquía de acoso
     def form_valid(self, form):
@@ -101,12 +77,13 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
 
         user = self.request.user
         if not (user.is_admin or user.es_coordinador()):
-            persona_denunciante = self.lock_name()
-            if persona_denunciante:
-                form.instance.denunciante = persona_denunciante
+            if hasattr(user, 'persona'):
+                form.instance.denunciante = user.persona
             else:
                 messages.error(self.request, 'El usuario no tiene personal asignado')
                 return self.form_invalid(form)
+
+        form.instance.creado_por = user
 
         if form.instance.persona_consejera:
             form.instance.estatus = 'En Proceso'
@@ -117,11 +94,6 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
 
         messages.success(self.request, 'Expediente registrado exitosamente.')
         return super().form_valid(form)
-    
-    def lock_name(self):
-        if hasattr(self.request.user, 'persona'):
-            return self.request.user.persona
-        return None
 
     ### Método para generar folio único basado en el tipo de caso
     def folio(self, tipo):
@@ -136,26 +108,16 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
             new_number = 1
         return f'CASO-{tipo}-{new_number:04d}'
 
-class CasoUpdateView(CoordinadorRequiredMixin, UpdateView):
+class CasoUpdateView(VocalOSuperiorMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
     fields = ['tipo', 'fecha', 'persona_consejera', 'resolucion']
     success_url = reverse_lazy('expediente_list')
 
-    def get_form(self,form_class=None):
-        form = super().get_form(form_class)
-        form.fields['fecha'].widget = forms.DateInput(attrs={'type': 'date'})
-
-        if 'persona_consejera' in form.fields:
-            from usuarios.models import Usuario
-            queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
-            logger.info(f"Personas consejeras encontradas: {queryset.count()}")
-            form.fields['persona_consejera'].queryset = queryset
-
-            form.fields['persona_consejera'].empty_label = "Asignar consejero(a)"
-            form.fields['persona_consejera'].widget.attrs.update({'class': 'form-control'})
-
-        return form
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def status_change(self):
         caso = self.object
@@ -184,11 +146,10 @@ class CasoCloseView(CoordinadorRequiredMixin, UpdateView):
     fields = ['acta_cierre', 'resolucion']
     success_url = reverse_lazy('expediente_list')
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields['acta_cierre'].widget = forms.FileInput(attrs={'type': 'file', 'class': 'form-control'})
-        form.fields['resolucion'].widget = forms.Textarea(attrs={'class': 'form-control'})
-        return form
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def status_change(self):
         caso = self.object
