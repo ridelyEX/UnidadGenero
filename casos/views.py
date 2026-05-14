@@ -65,10 +65,10 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
             return CasoCreateFormGeneral
 
     ### Sobrescribir el método get_form para usar un widget de fecha
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
+#    def get_form_kwargs(self):
+#        kwargs = super().get_form_kwargs()
+#        kwargs['user'] = self.request.user
+#        return kwargs
 
     ### Sobrescribir el método form_valid para generar folio único y manejar jerarquía de acoso
     def form_valid(self, form):
@@ -114,10 +114,10 @@ class CasoUpdateView(VocalOSuperiorMixin, UpdateView):
     fields = ['tipo', 'fecha', 'persona_consejera', 'resolucion']
     success_url = reverse_lazy('expediente_list')
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
+#    def get_form_kwargs(self):
+#       kwargs = super().get_form_kwargs()
+#        kwargs['user'] = self.request.user
+#        return kwargs
 
     def status_change(self):
         caso = self.object
@@ -146,10 +146,10 @@ class CasoCloseView(CoordinadorRequiredMixin, UpdateView):
     fields = ['acta_cierre', 'resolucion']
     success_url = reverse_lazy('expediente_list')
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
+#    def get_form_kwargs(self):
+#        kwargs = super().get_form_kwargs()
+#        kwargs['user'] = self.request.user
+#        return kwargs
 
     def status_change(self):
         caso = self.object
