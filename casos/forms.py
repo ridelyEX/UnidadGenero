@@ -42,16 +42,16 @@ class CasoBaseForm(forms.ModelForm):
             'persona_consejera': 'Vocal',
         }
 
-        def __init__(self, *args, **kwargs):
-            self.user = kwargs.pop('user', None)
-            super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
 
-            if 'denunciado' in self.fields:
-                self.fileds['denunciado'].empty_label = "Prefiero no contestar"
+        if 'denunciado' in self.fields:
+            self.fields['denunciado'].empty_label = "Prefiero no contestar"
 
-            if 'persona_consejera' in self.fields:
-                self.fields['persona_consejera'].queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
-                self.fields['persona_consejera'].empty_label = "Asignar vocal"
+        if 'persona_consejera' in self.fields:
+            self.fields['persona_consejera'].queryset = Usuario.objects.select_related('id_rol').filter(id_rol_id=2)
+            self.fields['persona_consejera'].empty_label = "Asignar vocal"
 
 class CasoCreateFormAdmin(CasoBaseForm):
     class Meta(CasoBaseForm.Meta):
@@ -91,9 +91,10 @@ class CasoCreateFormGeneral(CasoBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        #self.user = None
         if 'denunciante' in self.fields and self.user:
             self.fields['denunciante'].disabled = True
-            self.fields['denunciante'].widgets.attrs.update({
+            self.fields['denunciante'].widget.attrs.update({
                 'class': 'form-control',
                 'readonly': 'readonly',
             })

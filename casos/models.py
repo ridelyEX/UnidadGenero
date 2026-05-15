@@ -47,7 +47,7 @@ class Caso_atencion(models.Model):
     tipo = models.CharField(max_length=100, choices=tipos_violencia)
     jerarquia_acoso = models.CharField(max_length=5, choices=jerarquias_acoso, blank=True, default='N/A', verbose_name="Jerarquía de Acoso")
     # Campo de descripción de hechos
-    desc_hechos = models.TextField(max_length=100, blank=True, null=True)
+    desc_hechos = models.TextField(max_length=500, blank=True, null=True)
     # Descripción de las medidas de protección tomadas
     medidas_proteccion = models.TextField(blank=True, null=True)
 

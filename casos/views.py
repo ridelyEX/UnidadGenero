@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-from .forms import CasoCreateFormAdmin, CasoCreateFormVocal, CasoCreateFormGeneral
+from .forms import CasoCreateFormAdmin, CasoCreateFormVocal, CasoCreateFormGeneral, CasoCloseForm, CasoUpdateForm
 from .mixins import CoordinadorRequiredMixin, VocalOSuperiorMixin
 from .models import Caso_atencion
 from django.db.models import Q
@@ -52,7 +52,7 @@ class CasoListView(LoginRequiredMixin, ListView):
 class CasoCreateView(LoginRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    # fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
+    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     def get_form_class(self):
@@ -65,10 +65,10 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
             return CasoCreateFormGeneral
 
     ### Sobrescribir el método get_form para usar un widget de fecha
-#    def get_form_kwargs(self):
-#        kwargs = super().get_form_kwargs()
-#        kwargs['user'] = self.request.user
-#        return kwargs
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     ### Sobrescribir el método form_valid para generar folio único y manejar jerarquía de acoso
     def form_valid(self, form):
@@ -111,13 +111,13 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
 class CasoUpdateView(VocalOSuperiorMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'fecha', 'persona_consejera', 'resolucion']
+    form_class = CasoUpdateForm
     success_url = reverse_lazy('expediente_list')
 
-#    def get_form_kwargs(self):
-#       kwargs = super().get_form_kwargs()
-#        kwargs['user'] = self.request.user
-#        return kwargs
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def status_change(self):
         caso = self.object
@@ -143,13 +143,13 @@ class CasoUpdateView(VocalOSuperiorMixin, UpdateView):
 class CasoCloseView(CoordinadorRequiredMixin, UpdateView):
     model = Caso_atencion
     template_name = 'casos/caso_close.html'
-    fields = ['acta_cierre', 'resolucion']
+    form_class = CasoCloseForm
     success_url = reverse_lazy('expediente_list')
 
-#    def get_form_kwargs(self):
-#        kwargs = super().get_form_kwargs()
-#        kwargs['user'] = self.request.user
-#        return kwargs
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def status_change(self):
         caso = self.object
