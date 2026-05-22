@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'gestion',
     'casos',
     'indicadores',
+    'dependencias',
     'django_q',
 ]
 

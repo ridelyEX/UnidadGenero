@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('gestion.urls')),
     path('', include('casos.urls')),
     path('', include('indicadores.urls')),
+    path('', include('dependencias.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

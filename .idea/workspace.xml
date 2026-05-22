@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="requeriminetos de librerias del sistema">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidad_genero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidad_genero/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +17,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="5dbc2af5-592c-4fa6-93be-7ed6accbc4d5" />
+        <option name="activeSessionId" value="757bbae5-05ee-4535-a35b-0b4261f321de" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -472,7 +471,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773343768726</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres.">
+      <option name="closed" value="true" />
+      <created>1778875145399</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1778875145399</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,7 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Los roles son visibles con la descripción asignada." />
     <MESSAGE value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
@@ -512,7 +518,8 @@
     <MESSAGE value="expedientes asignados se muestran al vocal así como sus propios expedientes de denuncia" />
     <MESSAGE value="refactorizacion de los forms de casos/views.py con casos/forms.py" />
     <MESSAGE value="requeriminetos de librerias del sistema" />
-    <option name="LAST_COMMIT_MESSAGE" value="requeriminetos de librerias del sistema" />
+    <MESSAGE value="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres." />
+    <option name="LAST_COMMIT_MESSAGE" value="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
