@@ -18,8 +18,8 @@ class CasoBaseForm(forms.ModelForm):
                 'placeholder': 'Breve explicación de lo sucedido',
                 'rows': 4
             }),
-            'tipo': forms.Select(attrs={'class': 'form-control'}),
-            'jerarquia_acoso': forms.Select(attrs={'class': 'form-control'}),
+            #'tipo': forms.Select(attrs={'class': 'form-control'}),
+            #'jerarquia_acoso': forms.Select(attrs={'class': 'form-control'}),
             'denunciante': forms.Select(attrs={'class': 'form-control'}),
             'denunciado': forms.Select(attrs={'class': 'form-control'}),
             'medidas_porteccion': forms.Textarea(attrs={
@@ -38,6 +38,7 @@ class CasoBaseForm(forms.ModelForm):
         }
 
         labels = {
+            'fecha': 'Fecha de los hechos',
             'desc_hechos': 'Descripción de los hechos',
             'persona_consejera': 'Vocal',
         }
@@ -56,10 +57,10 @@ class CasoBaseForm(forms.ModelForm):
 class CasoCreateFormAdmin(CasoBaseForm):
     class Meta(CasoBaseForm.Meta):
         fields = [
-            'tipo',
-            'jerarquia_acoso',
+            #'tipo',
+            #'jerarquia_acoso',
             'fecha',
-            'denunciante',
+            #'denunciante',
             'denunciado',
             'desc_hechos',
             'medidas_proteccion',
@@ -69,10 +70,10 @@ class CasoCreateFormAdmin(CasoBaseForm):
 class CasoCreateFormVocal(CasoBaseForm):
     class Meta(CasoBaseForm.Meta):
         fields = [
-            'tipo',
-            'jerarquia_acoso',
+            #'tipo',
+            #'jerarquia_acoso',
             'fecha',
-            'denunciante',
+            #'denunciante',
             'denunciado',
             'desc_hechos',
         ]
@@ -80,10 +81,10 @@ class CasoCreateFormVocal(CasoBaseForm):
 class CasoCreateFormGeneral(CasoBaseForm):
     class Meta(CasoBaseForm.Meta):
         fields = [
-            'tipo',
-            'jerarquia_acoso',
+            #'tipo',
+            #'jerarquia_acoso',
             'fecha',
-            'denunciante',
+            #'denunciante',
             'denunciado',
             'desc_hechos',
         ]
@@ -104,7 +105,7 @@ class CasoCreateFormGeneral(CasoBaseForm):
 
 class CasoUpdateForm(CasoBaseForm):
     class Meta(CasoBaseForm.Meta):
-        fields = ['tipo', 'fecha', 'persona_consejera', 'resolucion']
+        fields = [ 'fecha', 'persona_consejera', 'resolucion']
 
 class CasoCloseForm(CasoBaseForm):
     class Meta(CasoBaseForm.Meta):

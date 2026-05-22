@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres.">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Creada app dependencias para consumir, separar y listar información de las distintas dependencias">
+      <change afterPath="$PROJECT_DIR$/dependencias/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unidad_genero/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidad_genero/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/casos/caso_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,14 +20,14 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="757bbae5-05ee-4535-a35b-0b4261f321de" />
+        <option name="activeSessionId" value="7089050b-4d41-4bac-ba9d-668b7ed436f1" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
             <option name="id" value="757bbae5-05ee-4535-a35b-0b4261f321de" />
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
-            <option name="modelValue" value="auto" />
+            <option name="modelValue" value="gpt-5.2-codex" />
             <option name="status" value="Completed" />
             <option name="targetType" value="LOCAL" />
           </session>
@@ -34,6 +37,23 @@
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="gemini-3.1-pro-preview" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="b6c7a293-b9ce-4369-b754-71d03dbd4a04" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="gemini-3.1-pro-preview" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="7089050b-4d41-4bac-ba9d-668b7ed436f1" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="gemini-3.1-pro-preview" />
+            <option name="status" value="Completed" />
             <option name="targetType" value="LOCAL" />
           </session>
         </option>
@@ -51,8 +71,9 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="Claude Sonnet 4.5" />
-      <entry key="agent-panel" value="Claude Sonnet 4.5" />
+      <entry key="agent-panel" value="Gemini 3.1 Pro" />
+      <entry key="inline" value="Auto" />
+      <entry key="chat-panel" value="Gemini 3.1 Pro" />
     </selectedModels>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -98,6 +119,32 @@
   <component name="ProjectId" id="39RDoodselTXuktH2eBVcYBhbMg" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectSessionTemplates">
+    <option name="inlineTemplate">
+      <template>
+        <option name="modeId" value="InlineAgent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="LOCAL" />
+      </template>
+    </option>
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Ask" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="gemini-3.1-pro-preview" />
+          </model>
+        </option>
+        <option name="targetType" value="LOCAL" />
+      </template>
+    </option>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -479,7 +526,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778875145399</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Creada app dependencias para consumir, separar y listar información de las distintas dependencias">
+      <option name="closed" value="true" />
+      <created>1779465398307</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1779465398307</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cambio de nomenclatura de casos/caso a Expediente/expedientes" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos" />
     <MESSAGE value="Modelos modificados para relaciones exactas e interacciones entre módulos.&#10;decoradores para roles de usuario implementados en decorators.py" />
     <MESSAGE value="creación de cierre de expedientes por medio de actas y resolución" />
@@ -519,7 +573,8 @@
     <MESSAGE value="refactorizacion de los forms de casos/views.py con casos/forms.py" />
     <MESSAGE value="requeriminetos de librerias del sistema" />
     <MESSAGE value="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres." />
-    <option name="LAST_COMMIT_MESSAGE" value="método init de la clase CasoCreateForm indentado correctamente con la clase Meta que daba error con el atributo user. Campo desc_hechos modificado para tener capacidad de 500 caracteres." />
+    <MESSAGE value="Creada app dependencias para consumir, separar y listar información de las distintas dependencias" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creada app dependencias para consumir, separar y listar información de las distintas dependencias" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -52,7 +52,7 @@ class CasoListView(LoginRequiredMixin, ListView):
 class CasoCreateView(LoginRequiredMixin, CreateView):
     model = Caso_atencion
     template_name = 'casos/caso_form.html'
-    fields = ['tipo', 'jerarquia_acoso', 'fecha', 'denunciante', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
+    fields = ['fecha', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
 
     def get_form_class(self):
