@@ -21,8 +21,10 @@ class Caso_atencion(models.Model):
     # Personas involucradas en el caso
     denunciante = models.ForeignKey('organizaciones.Persona', on_delete=SET_NULL, null=True, related_name='casos_denunciante')
     #denunciado = models.ForeignKey('organizaciones.Persona', on_delete=models.SET_NULL, null=True, related_name='casos_denunciado', default='Prefiero no contestar')
+    dependencia_denunciado = models.ForeignKey('dependencias.Dependencias', on_delete=SET_NULL, null=True, related_name='casos_dependencia_denunciado')
 
     denunciado = models.CharField(max_length=100, blank=True, null=True)
+    puesto_denunciado = models.CharField(max_length=100, blank=True, null=True)
 
     # Personal asignado al caso
     persona_consejera = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='casos_asignados')

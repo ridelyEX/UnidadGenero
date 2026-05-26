@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'indicadores',
     'dependencias',
     'django_q',
+    'formtools',
 ]
 
 AUTH_USER_MODEL = 'usuarios.Usuario'

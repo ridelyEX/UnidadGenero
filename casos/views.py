@@ -195,3 +195,8 @@ class CasoDeleteView(CoordinadorRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Expediente eliminado exitosamente.')
         return super().delete(request, *args, **kwargs)
+
+'''
+Vistas de renderizado de wizards
+'''
+
