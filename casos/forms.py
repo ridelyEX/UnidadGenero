@@ -20,8 +20,8 @@ class CasoBaseForm(forms.ModelForm):
             #'tipo': forms.Select(attrs={'class': 'form-control'}),
             #'jerarquia_acoso': forms.Select(attrs={'class': 'form-control'}),
             'denunciante': forms.Select(attrs={'class': 'form-control'}),
-            'denunciado': forms.Textarea(attrs={'class': 'form-control'}),
-            'puesto_denunciado': forms.Textarea(attrs={'class': 'form-control'}),
+            'denunciado': forms.TextInput(attrs={'class': 'form-control'}),
+            'puesto_denunciado': forms.TextInput(attrs={'class': 'form-control'}),
             'dependencia_denunciado': forms.Select(attrs={'class': 'form-control'}),
             'direccion_hechos': forms.Textarea({'class': "form-control"}),
             'medidas_porteccion': forms.Textarea(attrs={
@@ -129,10 +129,10 @@ class CasoCloseForm(CasoBaseForm):
 Clases forms para renderizado de wizards
 '''
 
-OPTIONS = [(True, "Sí"), (False, "No")]
+OPTIONS = [('True', "Sí"), ('False', "No")]
 
 def coerse_boolean(x):
-    return x == True
+    return x == 'True'
 
 class PBaseForm(forms.ModelForm):
     class Meta:
@@ -176,7 +176,7 @@ class P2_11Form(PBaseForm):
         choices=OPTIONS,
         widget=forms.RadioSelect,
         coerce=coerse_boolean,
-        label="¿Los actos de molestia han sido por un superior"
+        label="¿Los actos de molestia han sido por un superior?"
     )
     class Meta(PBaseForm.Meta):
         fields = ['p2_11']
@@ -203,6 +203,7 @@ class CasoCreateFormNo(CasoBaseForm):
 # Derecha
 class P2_2Form(PBaseForm):
     class Meta(PBaseForm.Meta):
+        fields = ['p2_2']
         widgets = {
             'p2_2': forms.Select(attrs={'class': 'form-control'}),
         }
