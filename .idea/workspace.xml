@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Creaión de wizards.py para manejo de flujo de formularios. Creación de caso_wizard.html para renderizar los formularios personalizados. forms y models ajustados para el correcto funcionamiento del flujo de formularios por respuestas (Todavía no funciona)">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="flujo funcinando, faltan correcciones en la lógoca de presentación de los formularios">
+      <change afterPath="$PROJECT_DIR$/templates/actas/acta_caso.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/wizards.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/wizards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizaciones/management/commands/importar_personas.py" beforeDir="false" afterPath="$PROJECT_DIR$/organizaciones/management/commands/importar_personas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +22,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="b8a251a1-d595-4610-b1a0-68186d41c289" />
+        <option name="activeSessionId" value="d1487f6f-b32b-44ad-9d51-40e6a68a2f16" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -83,6 +89,23 @@
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="gemini-3.1-pro-preview" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="eb6a157d-af69-4e0b-be45-88dcdf45ccc7" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="gemini-3.1-pro-preview" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="d1487f6f-b32b-44ad-9d51-40e6a68a2f16" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="gemini-3.1-pro-preview" />
+            <option name="status" value="Completed" />
             <option name="targetType" value="LOCAL" />
           </session>
         </option>
@@ -183,6 +206,7 @@
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.importar_personas.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -579,7 +603,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779829203164</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="flujo funcinando, faltan correcciones en la lógoca de presentación de los formularios">
+      <option name="closed" value="true" />
+      <created>1779915558669</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1779915558669</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -594,7 +626,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="creación de cierre de expedientes por medio de actas y resolución" />
     <MESSAGE value="logs añadidos a settings.py, cambio de estatus a &quot;En proceso&quot; cuando se asigna una persona consejera a un expediente" />
     <MESSAGE value="Cierre de casos completado por medio de actas de cierre y resolución. La plantilla se actualiza según el estado del expediente." />
     <MESSAGE value="actualización de los expedientes según la forma de creación (si tiene persona consejera estado: En proceso, sin persona consejera estado: Abierto." />
@@ -619,7 +650,8 @@
     <MESSAGE value="Creada app dependencias para consumir, separar y listar información de las distintas dependencias" />
     <MESSAGE value="TODO: clases secundarias en casos/models.py en los que trabajarán el flujo de los formularios" />
     <MESSAGE value="Creaión de wizards.py para manejo de flujo de formularios. Creación de caso_wizard.html para renderizar los formularios personalizados. forms y models ajustados para el correcto funcionamiento del flujo de formularios por respuestas (Todavía no funciona)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creaión de wizards.py para manejo de flujo de formularios. Creación de caso_wizard.html para renderizar los formularios personalizados. forms y models ajustados para el correcto funcionamiento del flujo de formularios por respuestas (Todavía no funciona)" />
+    <MESSAGE value="flujo funcinando, faltan correcciones en la lógoca de presentación de los formularios" />
+    <option name="LAST_COMMIT_MESSAGE" value="flujo funcinando, faltan correcciones en la lógoca de presentación de los formularios" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

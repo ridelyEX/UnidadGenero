@@ -2,6 +2,7 @@ from hmac import new
 import logging
 from django import forms
 from django.db import models
+from django.shortcuts import render
 from django.utils import timezone
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -19,6 +20,9 @@ logger = logging.getLogger(__name__)
 class AdminRequiredMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_authenticated and self.request.user.is_admin
+
+def acta_view(request):
+    return render(request, 'actas/acta_caso.html')
 
 class CasoListView(LoginRequiredMixin, ListView):
     model = Caso_atencion

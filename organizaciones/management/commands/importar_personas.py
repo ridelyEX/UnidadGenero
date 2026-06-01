@@ -3,8 +3,8 @@ import os
 import pandas as pd
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from organizaciones.models import Persona
 
+from organizaciones.models import Persona
 
 class Command(BaseCommand):
     help = 'Importa personas desde un archivo Excel'

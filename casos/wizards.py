@@ -28,20 +28,25 @@ def is_left(wizard):
     cleaned_data = wizard.get_cleaned_data_for_step("p2") or {}
     return cleaned_data.get("p2") is True
 
+def show_p2_1(wizard):
+    if not is_left(wizard): return False
+    cleaned_data = wizard.get_cleaned_data_for_step("p2_1") or {}
+    return cleaned_data.get("p2_1") is True
+
 def show_p2_11(wizard):
     return is_left(wizard)
 
 def show_caso_si(wizard):
     '''Muestra la pregunta p2_11 si es true'''
     if not is_left(wizard): return False
-    cleaned_data = wizard.get_cleaned_data_for_step("p2_11") or {}
-    return cleaned_data.get("p2_11") is True
+    cleaned_data = wizard.get_cleaned_data_for_step("p2_1") or {}
+    return cleaned_data.get("p2_1") is True
 
 def show_caso_no(wizard):
     '''Muestra la pregunt a p2_11 es false'''
     if not is_left(wizard): return False
-    cleaned_data = wizard.get_cleaned_data_for_step("p2_11") or {}
-    return cleaned_data.get("p2_11") is False
+    cleaned_data = wizard.get_cleaned_data_for_step("p2_1") or {}
+    return cleaned_data.get("p2_1") is False
 
 # Derecha
 def is_right(wizard):
