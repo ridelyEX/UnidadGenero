@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="creación del acta para importar a pdf por medio de WaesyPrint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/actas/acta_caso.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/actas/acta_caso.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casos/wizards.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/wizards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/indicadores/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/indicadores/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,21 +202,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.importar_personas.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "Casos-models-refactor",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Usuario/Documents/UnidadDeGenero/casos",
-    "settings.editor.selected.configurable": "settings.sync"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.importar_personas.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Casos-models-refactor&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Usuario/Documents/UnidadDeGenero/casos&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Usuario\Documents\UnidadDeGenero\casos" />

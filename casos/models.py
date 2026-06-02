@@ -59,13 +59,13 @@ class CasoAtencionFlow(models.Model):
     p2_11 = models.BooleanField(default=False)
 
     # Derecha
-    p2_2 = models.CharField(blank=True, null=True, max_length=100, choices=Caso_atencion.ambito_choices)
+    p2_2 = models.CharField(blank=True, null=True, max_length=100, choices=CasoAtencion.ambito_choices)
     direccion_hechos = models.CharField(blank=True, null=True, max_length=150)
 
 
 class CasoAtencionDetails(models.Model):
     '''
-    TODO: Tabla secundaria del modelo Caso_atencion para separar los detalles de la base de datos y evitar sobrecarga
+    Tabla secundaria del modelo Caso_atencion para separar los detalles de la base de datos y evitar sobrecarga
     '''
     caso = models.OneToOneField(CasoAtencion, on_delete=models.CASCADE, related_name="detalles")
 

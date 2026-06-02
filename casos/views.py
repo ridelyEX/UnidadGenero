@@ -11,7 +11,7 @@ from django.contrib import messages
 
 from .forms import CasoCreateFormAdmin, CasoCreateFormVocal, CasoCreateFormGeneral, CasoCloseForm, CasoUpdateForm
 from .mixins import CoordinadorRequiredMixin, VocalOSuperiorMixin
-from .models import Caso_atencion
+from .models import CasoAtencion
 from django.db.models import Q
 
 logger = logging.getLogger(__name__)
@@ -25,36 +25,35 @@ def acta_view(request):
     return render(request, 'actas/acta_caso.html')
 
 class CasoListView(LoginRequiredMixin, ListView):
-    model = Caso_atencion
+    model = CasoAtencion
     template_name = 'casos/caso_list.html'
     context_object_name = 'expedientes'
 
     def get_queryset(self):
         user = self.request.user
 
-        if user.is_admin or user.es_coordinador():
-            return Caso_atencion.objects.all()
+        if user.is_admin or user.es_coordinador:
+            return CasoAtencion.objects.all()
 
         elif user.es_vocal() or user.es_secretaria():
-            # return Caso_atencion.objects.filter(persona_consejera=user) query para listar casos asignados (no se asignan de momento)
+            # return CasoAtencion.objects.filter(persona_consejera=user) query para listar casos asignados (no se asignan de momento)
             if hasattr(user, 'persona'):
-                return Caso_atencion.objects.filter(
+                return CasoAtencion.objects.filter(
                     Q(persona_consejera=user) | Q(denunciante=user.persona)
                 )
-            else:
-                return Caso_atencion.objects.filter(persona_consejera=user)
+            else:                return CasoAtencion.objects.filter(persona_consejera=user)
 
         else:
             if hasattr(user, 'persona'):
-                return Caso_atencion.objects.filter(
+                return CasoAtencion.objects.filter(
                     models.Q(denunciante=user.persona) #| models.Q(denunciado=user.persona lista los expedientes en los que es señalado. En desuso
                 )
             else:
-                return Caso_atencion.objects.none()
+                return CasoAtencion.objects.none()
 
 # Vista para crear un nuevo caso de atención, con generación automática de folio y manejo de jerarquía de acoso
 class CasoCreateView(LoginRequiredMixin, CreateView):
-    model = Caso_atencion
+    model = CasoAtencion
     template_name = 'casos/caso_form.html'
     fields = ['fecha', 'denunciado', 'medidas_proteccion', 'persona_consejera',]
     success_url = reverse_lazy('expediente_list')
@@ -101,7 +100,7 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
 
     ### Método para generar folio único basado en el tipo de caso
     def folio(self, tipo):
-        last_caso = Caso_atencion.objects.order_by('id_caso').last()
+        last_caso = CasoAtencion.objects.order_by('id_caso').last()
         if last_caso and last_caso.folio and last_caso.folio.startswith('CASO-'):
             try:
                 last_number= int(last_caso.folio.split('-')[2])
@@ -113,7 +112,7 @@ class CasoCreateView(LoginRequiredMixin, CreateView):
         return f'CASO-{tipo}-{new_number:04d}'
 
 class CasoUpdateView(VocalOSuperiorMixin, UpdateView):
-    model = Caso_atencion
+    model = CasoAtencion
     template_name = 'casos/caso_form.html'
     form_class = CasoUpdateForm
     success_url = reverse_lazy('expediente_list')
@@ -145,7 +144,7 @@ class CasoUpdateView(VocalOSuperiorMixin, UpdateView):
         return super().form_valid(form)
 
 class CasoCloseView(CoordinadorRequiredMixin, UpdateView):
-    model = Caso_atencion
+    model = CasoAtencion
     template_name = 'casos/caso_close.html'
     form_class = CasoCloseForm
     success_url = reverse_lazy('expediente_list')
@@ -192,7 +191,7 @@ class CasoCloseView(CoordinadorRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 class CasoDeleteView(CoordinadorRequiredMixin, DeleteView):
-    model = Caso_atencion
+    model = CasoAtencion
     template_name = 'casos/caso_confirm_delete.html'
     success_url = reverse_lazy('expediente_list')
 

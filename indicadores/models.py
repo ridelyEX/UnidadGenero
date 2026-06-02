@@ -1,6 +1,6 @@
 from django.db import models
 
-from casos.models import Caso_atencion
+from casos.models import CasoAtencion
 
 
 class Indicador(models.Model):
@@ -10,7 +10,7 @@ class Indicador(models.Model):
     tipo = models.CharField(max_length=100) # Quantitativo, Qualitativo
     periodicidad = models.CharField(max_length=50) # Mensual, Anual
 
-    casos = models.ManyToManyField(Caso_atencion, blank=True, related_name='indicadores')
+    casos = models.ManyToManyField(CasoAtencion, blank=True, related_name='indicadores')
 
     fecha = models.DateField(auto_now_add=True)
 

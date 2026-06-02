@@ -1,12 +1,14 @@
 from django.contrib.sessions.management.commands import clearsessions
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
 from formtools.wizard.views import SessionWizardView
 
+from unidad_genero import settings
 from .forms import (
     P1Form, P2Form, P2_1Form, P2_11Form, P2_2Form,
     CasoCreateFormSi, CasoCreateFormNo, CasoCreateFormCF, CasoCreateFormCS, CasoCreateFormOtro
 )
-from .models import Caso_atencion
+from .models import CasoAtencion
 
 FORMS = [
     ('p1', P1Form),
@@ -86,9 +88,10 @@ CONDITIONS = {
 # Clases de wizards
 class CreateCasoWizard(SessionWizardView):
     template_name = "casos/caso_wizard.html"
+    file_storage = FileSystemStorage(location=settings.MEDIA_ROOT)
 
     def done(self, form_list, **kwargs):
-        nuevo_caso = Caso_atencion()
+        nuevo_caso = CasoAtencion()
         for form in form_list:
             for campo, valor in form.cleaned_data.items():
                 setattr(nuevo_caso, campo, valor)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-from casos.models import Caso_atencion
+from casos.models import CasoAtencion
 from organizaciones.models import Persona
 
 
@@ -21,7 +21,7 @@ class Actividad(models.Model):
 
     id_actividad = models.AutoField(primary_key=True)
     tipo_actividad = models.CharField(max_length=100, choices=actividades_choices)
-    id_caso = models.ForeignKey(Caso_atencion, on_delete=models.CASCADE, blank=True, null=True)
+    id_caso = models.ForeignKey(CasoAtencion, on_delete=models.CASCADE, blank=True, null=True)
     objetivo = models.TextField()
     fecha_inicio = models.DateField()
     id_usuario_responsable = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='actividades_responsable')
@@ -37,7 +37,7 @@ class Bitacora(models.Model):
     id_usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     id_actividades = models.ForeignKey(Actividad, on_delete=models.CASCADE)
 
-    caso = models.ForeignKey(Caso_atencion, on_delete=models.CASCADE, related_name='bitacoras', null=True, blank=True)
+    caso = models.ForeignKey(CasoAtencion, on_delete=models.CASCADE, related_name='bitacoras', null=True, blank=True)
 
     editable = models.BooleanField(default=False)
 
@@ -65,7 +65,7 @@ class Documento(models.Model):
 
     # Datos relacionados la documento
     id_usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-    caso = models.ForeignKey(Caso_atencion, on_delete=models.CASCADE, null=True, blank=True, related_name='documentos')
+    caso = models.ForeignKey(CasoAtencion, on_delete=models.CASCADE, null=True, blank=True, related_name='documentos')
     id_actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE, null=True, blank=True)
 
     # Confidencialidad del documento
