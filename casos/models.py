@@ -21,7 +21,7 @@ class CasoAtencion(models.Model):
     folio = models.CharField(max_length=30, unique=True, null=True, blank=True)
 
     # Personas involucradas en el caso
-    denunciante = models.ForeignKey('organizaciones.Persona', on_delete=SET_NULL, null=True, related_name='casos_denunciante')
+    denunciante = models.ForeignKey('usuarios.Usuario', on_delete=SET_NULL, null=True, related_name='casos_denunciante')
 
     # Datos del denunciado
     denunciado = models.CharField(max_length=100, blank=True, null=True)
@@ -49,7 +49,7 @@ class CasoAtencionFlow(models.Model):
     Tabla que controla el flujo de los wizards y almacena las respuestas a las preguntas de cada paso para cada caso de atención,
     permitiendo así tener un registro del proceso seguido en cada caso y facilitar la generación de reportes y análisis posteriores.
     '''
-    caso = models.OneToOneField(CasoAtencion, on_delete=models.CASCADE, related_name="flujo")
+    caso = models.OneToOneField(CasoAtencion, on_delete=models.CASCADE, related_name="flujo", null=True)
     # Preguntas de flujo
     p1 = models.BooleanField(default=False)
     p2 = models.BooleanField(default=False)
@@ -67,7 +67,7 @@ class CasoAtencionDetails(models.Model):
     '''
     Tabla secundaria del modelo Caso_atencion para separar los detalles de la base de datos y evitar sobrecarga
     '''
-    caso = models.OneToOneField(CasoAtencion, on_delete=models.CASCADE, related_name="detalles")
+    caso = models.OneToOneField(CasoAtencion, on_delete=models.CASCADE, related_name="detalles", null=True)
 
     # Campo de descripción de hechos
     desc_hechos = models.TextField(max_length=500, blank=True, null=True)

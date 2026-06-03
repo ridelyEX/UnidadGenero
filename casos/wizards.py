@@ -90,13 +90,38 @@ class CreateCasoWizard(SessionWizardView):
     template_name = "casos/caso_wizard.html"
     file_storage = FileSystemStorage(location=settings.MEDIA_ROOT)
 
+    def folio(self, fecha):
+        last_caso = CasoAtencion.objects.order_by('id_caso').last()
+        if last_caso and last_caso.folio and last_caso.folio.startswith('CASO-'):
+            try:
+                last_number= int(last_caso.folio.split('-')[2])
+                new_number = last_number + 1
+            except (IndexError, ValueError):
+                new_number = 1
+        else:
+            new_number = 1
+        return f'CASO-{new_number:04d}/{fecha}'
+
+    def date(self, fecha):
+        caso = CasoAtencion.objects.order_by('id_caso').last()
+        fecha = caso.fecha_creacion
+
+        year_str = fecha.strftime("%Y")
+        year_slice = year_str[2:4]
+
+        return year_slice
+
     def done(self, form_list, **kwargs):
         nuevo_caso = CasoAtencion()
+
         for form in form_list:
             for campo, valor in form.cleaned_data.items():
                 setattr(nuevo_caso, campo, valor)
 
         nuevo_caso.creado_por = self.request.user
+
+        fecha_slice = self.date(nuevo_caso.fecha)
+        nuevo_caso.folio = self.folio(fecha_slice)
         nuevo_caso.save()
 
-        return render(self.request, "", {"caso":nuevo_caso})
+        return render(self.request, "casos/caso_list.html", {"caso":nuevo_caso})

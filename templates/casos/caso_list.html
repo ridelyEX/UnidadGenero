@@ -13,7 +13,6 @@
         <thead>
             <tr>
                 <th>Folio</th>
-                <th>Tipo</th>
                 <th>Fecha incidencia</th>
                 <th>Estatus</th>
                 <th>Asignado a</th>
@@ -24,7 +23,6 @@
             {% for caso in expedientes %}
             <tr>
                 <td>{{ caso.folio }}</td>
-                <td>{{ caso.get_tipo_display }} ({{ caso.get_jerarquia_acoso_display }})</td>
                 <td>{{ caso.fecha }}</td>
                 <td>{{ caso.estatus }}</td>
                 <td>
