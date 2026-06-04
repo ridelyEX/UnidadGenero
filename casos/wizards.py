@@ -94,9 +94,11 @@ class CreateCasoWizard(SessionWizardView):
         last_caso = CasoAtencion.objects.order_by('id_caso').last()
         if last_caso and last_caso.folio and last_caso.folio.startswith('CASO-'):
             try:
-                last_number= int(last_caso.folio.split('-')[2])
+                num_str = last_caso.folio.split("-")[1].split("/")[0]
+
+                last_number = int(num_str)
                 new_number = last_number + 1
-            except (IndexError, ValueError):
+            except (IndexError, ValueError, AttributeError):
                 new_number = 1
         else:
             new_number = 1
@@ -121,6 +123,7 @@ class CreateCasoWizard(SessionWizardView):
         nuevo_caso.creado_por = self.request.user
 
         fecha_slice = self.date(nuevo_caso.fecha)
+        nuevo_caso.denunciante = nuevo_caso.creado_por
         nuevo_caso.folio = self.folio(fecha_slice)
         nuevo_caso.save()
 

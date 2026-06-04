@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="Adaptación del modelo Caso_atencion a CasoAtencion. Modificación de la clase CasoBaseForm para tener acceso a las tablas de CasoAtencionFlow y CasoAtencionDetails">
+    <list default="true" id="f73086e6-2624-44d7-9b31-37b858c0b183" name="Changes" comment="folios adaptados a la nueva creación y flujo de actas con wizards">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/casos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/casos/wizards.py" beforeDir="false" afterPath="$PROJECT_DIR$/casos/wizards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/casos/caso_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/casos/caso_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -623,7 +621,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780432194940</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="folios adaptados a la nueva creación y flujo de actas con wizards">
+      <option name="closed" value="true" />
+      <created>1780520318714</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1780520318714</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -638,7 +644,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="actualización de los expedientes según la forma de creación (si tiene persona consejera estado: En proceso, sin persona consejera estado: Abierto." />
     <MESSAGE value="expedientes modificados en casos/views.py para campos según el usuario" />
     <MESSAGE value="uniendo el modelo Usuario con el modelo Persona para la lista de expedientes por ID. En proceso" />
     <MESSAGE value="usuarios y personas tienen relación y pueden ser creados con normalidad. Error de lógica en usuarios/views.py que no permitía crear usuarios corregido" />
@@ -663,7 +668,8 @@
     <MESSAGE value="flujo funcinando, faltan correcciones en la lógoca de presentación de los formularios" />
     <MESSAGE value="creación del acta para importar a pdf por medio de WaesyPrint" />
     <MESSAGE value="Adaptación del modelo Caso_atencion a CasoAtencion. Modificación de la clase CasoBaseForm para tener acceso a las tablas de CasoAtencionFlow y CasoAtencionDetails" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adaptación del modelo Caso_atencion a CasoAtencion. Modificación de la clase CasoBaseForm para tener acceso a las tablas de CasoAtencionFlow y CasoAtencionDetails" />
+    <MESSAGE value="folios adaptados a la nueva creación y flujo de actas con wizards" />
+    <option name="LAST_COMMIT_MESSAGE" value="folios adaptados a la nueva creación y flujo de actas con wizards" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
