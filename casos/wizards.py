@@ -1,6 +1,6 @@
 from django.contrib.sessions.management.commands import clearsessions
 from django.core.files.storage import FileSystemStorage
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from formtools.wizard.views import SessionWizardView
 
 from unidad_genero import settings
@@ -127,4 +127,4 @@ class CreateCasoWizard(SessionWizardView):
         nuevo_caso.folio = self.folio(fecha_slice)
         nuevo_caso.save()
 
-        return render(self.request, "casos/caso_list.html", {"caso":nuevo_caso})
+        return redirect("expediente_list")

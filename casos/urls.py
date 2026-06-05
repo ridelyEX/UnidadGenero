@@ -3,7 +3,7 @@ from formtools.wizard.views import WizardView
 
 from .views import (
     CasoListView, CasoCreateView,
-    CasoUpdateView, CasoDeleteView, CasoCloseView, acta_view
+    CasoUpdateView, CasoDeleteView, CasoCloseView, acta_view, analisis_imm_view
 )
 from .wizards import CreateCasoWizard, FORMS, CONDITIONS
 
@@ -15,4 +15,5 @@ urlpatterns = [
     path('expediente/<int:pk>/eliminar/', CasoDeleteView.as_view(), name='expediente_delete'),
     path('expediente/denuncia/wizard', CreateCasoWizard.as_view(FORMS, condition_dict=CONDITIONS), name='expediente_wizard'),
     path('acta/', acta_view, name='acta_list'),
+    path('imm/', analisis_imm_view, name='analisis_imm'),
 ]
