@@ -24,6 +24,9 @@ class AdminRequiredMixin(UserPassesTestMixin):
 def acta_view(request):
     return render(request, 'actas/acta_caso.html')
 
+def analisis_imm_view(request):
+    return render(request, 'actas/analisis_imm.html')
+
 class CasoListView(LoginRequiredMixin, ListView):
     model = CasoAtencion
     template_name = 'casos/caso_list.html'
